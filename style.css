@@ -4,6 +4,11 @@
 }
 
 /*레이아웃*/
+h1 {
+    color: white;
+    font-size: 48pt;
+}
+
 .container {
     text-align:center;
 }
