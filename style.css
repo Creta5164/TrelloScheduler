@@ -2,3 +2,8 @@
     margin:0;
     background:#09f;
 }
+
+/*레이아웃*/
+.button {
+    padding:15px;
+}
