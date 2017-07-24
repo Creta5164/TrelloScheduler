@@ -1,6 +1,6 @@
 ﻿var loginState;
 
-function init()
+function loginTrello()
 {
     loginState = false;
     Trello.authorize({
@@ -27,5 +27,3 @@ function Trello_LoginSuccess()
 function Trello_LoginFail() {
     document.body.style.background = "#f00";
 }
-
-init();
