@@ -10,4 +10,7 @@
     cursor: pointer;
     border-radius: 15px;
     background: linear-gradient(to bottom, #5aac44 0, #519839 100%);
+
+    color:white;
+    font-weight:700;
 }
