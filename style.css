@@ -5,5 +5,9 @@
 
 /*레이아웃*/
 .button {
-    padding:15px;
+    padding: 15px;
+    display: block;
+    cursor: pointer;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #5aac44 0, #519839 100%);
 }
