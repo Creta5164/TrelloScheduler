@@ -4,7 +4,7 @@ function loginTrello()
 {
     loginState = false;
     Trello.authorize({
-        type: 'popup',
+        type: 'none',
         name: 'Trello 스케줄러',
         scope: {
             read: 'true',
