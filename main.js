@@ -1,4 +1,9 @@
-﻿var loginState;
+﻿function openGitHubPage()
+{
+	window.location="https://github.com/Creta5164/TrelloScheduler";
+}
+
+var loginState;
 
 function loginTrello()
 {

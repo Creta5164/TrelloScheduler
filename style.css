@@ -1,4 +1,12 @@
-﻿body {
+﻿* {
+	transition:all 0.1s;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
     margin:0;
     background:#09f;
 }
@@ -9,11 +17,36 @@ h1 {
     font-size: 48pt;
 }
 
+.navi {
+	width:100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	position:fixed;
+}
+
+.navi li {
+    float: left;
+}
+
+.navi li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navi li a:hover {
+    background-color: #fff;
+	color:#09f;
+}
+
 .container {
     text-align:center;
 }
 
-.button {
+.container .button {
     padding: 9px 15px 9px 15px;
     display: inline-block;
     cursor: pointer;
@@ -25,6 +58,11 @@ h1 {
     box-shadow: 0 2px 0 #3f6f21;
 }
 
-.button:hover {
+.container .button:hover {
     background: linear-gradient(to bottom, #64a200 0%, #578c00 100%);
+}
+
+.text {
+	color:white;
+	font-size:18pt;
 }
