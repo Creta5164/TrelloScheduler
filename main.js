@@ -1,9 +1,4 @@
-﻿function openGitHubPage()
-{
-	window.location="https://github.com/Creta5164/TrelloScheduler";
-}
-
-var loginState;
+﻿var loginState;
 
 function loginTrello()
 {
@@ -21,14 +16,19 @@ function loginTrello()
     });
 }
 
+function logoutTrello() {
+    Trello.deauthorize();
+    location.reload();
+}
+
 //트렐로 로그인 성공
 function Trello_LoginSuccess()
 {
-    document.body.style.background = "#fff";
     loginState = true;
 }
 
 //트렐로 로그인 실패
-function Trello_LoginFail() {
-    document.body.style.background = "#f00";
+function Trello_LoginFail()
+{
+    alert("로그인에 실패했습니다.");
 }
