@@ -63,11 +63,11 @@ h1 {
 }
 
 .text {
-	color:white;
-	font-size:18pt;
+	color: white;
+	font-size: 18pt;
 }
 
 .text a {
-    color:cornflowerblue;
-    text-decoration:underline;
+    color: #87cefa;
+    text-decoration: underline;
 }
