@@ -1,5 +1,4 @@
 ﻿var loginState;
-document.getElementById("logout").style.display = "none";
 
 function loginTrello()
 {
