@@ -47,7 +47,7 @@ function Trello_LoginFail()
 function loadProgram()
 {
     Trello.boards.get(
-      { schedulerBoardID},
+      schedulerBoardID,
           {fields: ['id', 'labels', 'powerUps']},
       (response) => console.log(`Success: ${response}`),
       (response) => console.log(`Error: ${response}`)
