@@ -1,5 +1,10 @@
 ﻿var loginState;
 
+function onload()  {
+    loginState = Trello.authorized;
+    document.getElementById("logout").style.display = loginState ? "list-item" : "none";
+}
+
 function loginTrello()
 {
     loginState = false;
