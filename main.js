@@ -53,7 +53,6 @@ function loadProgram() {
         CheckSchedulerBoardExists,
         LoadFailed
     );
-    
 }
 
 function CheckSchedulerBoardExists(list) {
@@ -73,7 +72,10 @@ function CheckSchedulerBoardExists(list) {
         desc: "Trello 스케줄러가 사용하는 보드입니다, 특별한 일이 아니라면 삭제하거나 편집하지 마세요!"
     });
 
-    CheckSchedulerBoardExists();
+    Trello.get("/members/me/boards/",
+        CheckSchedulerBoardExists,
+        LoadFailed
+    );
 }
 
 function LoadFailed()
