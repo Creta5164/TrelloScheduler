@@ -1,31 +1,26 @@
 ﻿var loginState;
 const schedulerBoardID = "TrelloScheduler";
 
-function init()  {
-    loginState = Trello.authorized();
-    document.getElementById("logout").style.display = loginState ? "list-item" : "none";
-    if (loginState) loadProgram();
-}
-
 function loginTrello()
 {
-    loginState = false;
     Trello.authorize({
-        type: 'popup',
-        name: 'Trello 스케줄러',
-        scope: {
-            read: 'true',
-            write: 'true'
-        },
-        expiration: 'never',
-        success: Trello_LoginSuccess,
-        error: Trello_LoginFail
+        interactive: false,
+        success: onAuthorize
     });
 }
 
+//트렐로 로그인 시도
+function onAuthorize() {
+    loginState = Trello.authorized();
+    document.getElementById("logout").style.display = loginState ? "list-item" : "none";
+
+    if (loginState) loadProgram();
+}
+
+//트렐로 로그아웃
 function logoutTrello() {
     Trello.deauthorize();
-    location.reload();
+    onAuthorize();
 }
 
 //트렐로 로그인 성공
@@ -46,10 +41,10 @@ function Trello_LoginFail()
 //Trello 스케줄러를 시작합니다.
 function loadProgram()
 {
-    Trello.boards.get(
-      schedulerBoardID,
-          {fields: ['id', 'labels', 'powerUps']},
-      (response) => console.log(`Success: ${response}`),
-      (response) => console.log(`Error: ${response}`)
-    );
+    Trello.boards.get("me", IDelegateLoadBoards);
+}
+
+function IDelegateLoadBoards(boards)
+{
+    console.log(boards);
 }
