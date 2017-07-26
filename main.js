@@ -1,5 +1,6 @@
 ﻿var loginState;
-const schedulerBoardID = "TrelloScheduler";
+const schedulerBoardName = "TrelloScheduler";
+var schedulerBoardData;
 
 function init() {
 
@@ -57,7 +58,18 @@ function loadProgram() {
 
 function CheckSchedulerBoardExists(list) {
     for (var i = 0, len = list.length; i < len; i++)
-        console.log(list[i]);
+        if (list[i].name == schedulerBoardName)
+        {
+            schedulerBoardData = list[i];
+            return;
+        }
+
+    Trello.rest('POST', `boards`, {
+        name: schedulerBoardName,
+        desc: "Trello 스케줄러가 사용하는 보드입니다, 특별한 일이 아니라면 삭제하거나 편집하지 마세요!"
+    });
+
+    CheckSchedulerBoardExists();
 }
 
 function LoadFailed()
