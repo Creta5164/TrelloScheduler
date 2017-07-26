@@ -70,9 +70,9 @@ function CheckSchedulerBoardExists(list) {
     Trello.rest('POST', `boards`, {
         name: schedulerBoardName,
         desc: "Trello 스케줄러가 사용하는 보드입니다, 특별한 일이 아니라면 삭제하거나 편집하지 마세요!"
-    });
-
-    loadProgram();
+    },
+    function (result) { loadProgram },
+    LoadFailed);
 }
 
 function LoadFailed()
