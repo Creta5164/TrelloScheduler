@@ -1,11 +1,13 @@
 ﻿let loginState;
 let programLoaded;
+let firstCreated;
 const schedulerBoardName = "TrelloScheduler";
 let schedulerBoardData;
 
 function init() {
     loginState = false;
     programLoaded = false;
+    firstCreated = false;
 }
 
 function loginTrello() {
@@ -51,7 +53,7 @@ function Trello_LoginFail() {
 }
 
 //Trello 스케줄러를 시작합니다.
-function loadProgram(steps) {
+function loadProgram(steps, state) {
     if (programLoaded) return;
     switch (steps) {
         default:
@@ -65,6 +67,9 @@ function loadProgram(steps) {
             );
             return;
         case 1:
+            
+            if (state == "new")
+                ClearSchedulerCards(true);
 
             return;
     }
@@ -73,23 +78,46 @@ function loadProgram(steps) {
     programLoaded = true;
 }
 
+//스케줄러 보드의 카드를 전부 지웁니다.
+function ClearSchedulerCards(force) {
+    if (programLoaded) return;
+    //강제 청소
+    if (force) {
+        Trello.get("/boards/" + schedulerBoardData.id + "/lists",
+            DeleteCards,
+            LoadFailed);
+
+        return;
+    }
+}
+
+//보드를 새로 만들 지 결정합니다, 이미 있는 경우 해당 보드 데이터를 가져옵니다.
 function CheckSchedulerBoardExists(list) {
     if (programLoaded) return;
     for (var i = 0, len = list.length; i < len; i++)
         if (list[i].name == schedulerBoardName) {
             schedulerBoardData = list[i];
-            loadProgram(1);
+            loadProgram(1, firstCreated ? "new" : null);
             return;
         }
 
+    firstCreated = true;
     Trello.rest('POST', 'boards', {
-        name: schedulerBoardName,
-        desc: "Trello 스케줄러가 사용하는 보드입니다, 특별한 일이 아니라면 삭제하거나 편집하지 마세요!"
-    },
-    function (result) { loadProgram(0); },
-    LoadFailed);
+            name: schedulerBoardName,
+            desc: "Trello 스케줄러가 사용하는 보드입니다, 특별한 일이 아니라면 삭제하거나 편집하지 마세요!"
+        },
+        function (result) { loadProgram(0); },
+        LoadFailed
+    );
 }
 
+//카드를 모두 지웁니다.
+function DeleteCards(list) {
+    for (var i = 0, len = list.length; i < len; i++)
+        Trello.put("/lists/" + list[i].id + "/closed?value=true");
+}
+
+//로드 실패
 function LoadFailed() {
     programLoaded = false;
     alert("통신하는 도중, 오류가 발생했습니다.");
