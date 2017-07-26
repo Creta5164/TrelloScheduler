@@ -1,4 +1,5 @@
 ﻿var loginState;
+document.getElementById("logout").style.display = "none";
 
 function loginTrello()
 {
@@ -25,10 +26,12 @@ function logoutTrello() {
 function Trello_LoginSuccess()
 {
     loginState = true;
+    document.getElementById("logout").style.display = "list-item";
 }
 
 //트렐로 로그인 실패
 function Trello_LoginFail()
 {
     alert("로그인에 실패했습니다.");
+    document.getElementById("logout").style.display = "none";
 }
