@@ -1,11 +1,11 @@
-Trello ½ºÄÉÁÙ·¯ (¹Ì¿Ï¼º, Á¦ÀÛ Áß)
+Trello ìŠ¤ì¼€ì¤„ëŸ¬ (ë¯¸ì™„ì„±, ì œìž‘ ì¤‘)
 ===============
 
-Trello¸¦ ÀÌ¿ëÇØ, ÇØ¾ß ÇÒ ÀÏÀ» ¿äÀÏº°·Î °ü¸®ÇØÁÝ´Ï´Ù.
+Trelloë¥¼ ì´ìš©í•´, í•´ì•¼ í•  ì¼ì„ ìš”ì¼ë³„ë¡œ ê´€ë¦¬í•´ì¤ë‹ˆë‹¤.
 
-ÀÌ°Ô ´Ù¿¡¿ä.
+ì´ê²Œ ë‹¤ì—ìš”.
 
 
 
-»ç¿ëÇÒ ¶§´Â, ¿ùÆäÀÌÆÛ ¿£Áø°ú ÇÔ²² »ç¿ëÇÏ´Â °ÍÀ» ÃßÃµÇÕ´Ï´Ù.
-* Trello ½ºÄÉÁÙ·¯ ¸µÅ© : https://creta5164.github.io/TrelloScheduler
+ì‚¬ìš©í•  ë•ŒëŠ”, ì›”íŽ˜ì´í¼ ì—”ì§„ê³¼ í•¨ê»˜ ì‚¬ìš©í•˜ëŠ” ê²ƒì„ ì¶”ì²œí•©ë‹ˆë‹¤.
+* Trello ìŠ¤ì¼€ì¤„ëŸ¬ ë§í¬ : https://creta5164.github.io/TrelloScheduler
