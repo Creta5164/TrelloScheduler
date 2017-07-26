@@ -1,9 +1,10 @@
 ﻿* {
 	transition:all 0.1s;
+    font-family: 'Spoqa Han Sans', 'Malgun Gothic', sans-serif;
 }
 
 html {
-	scroll-behavior: smooth;
+
 }
 
 body {
