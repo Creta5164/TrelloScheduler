@@ -57,13 +57,17 @@ function loadProgram() {
 }
 
 function CheckSchedulerBoardExists(list) {
+    console.log("보드 색인 중...");
+
     for (var i = 0, len = list.length; i < len; i++)
         if (list[i].name == schedulerBoardName)
         {
+            console.log("보드를 발견함.");
             schedulerBoardData = list[i];
             return;
         }
 
+    console.log("보드를 생성함.");
     Trello.rest('POST', `boards`, {
         name: schedulerBoardName,
         desc: "Trello 스케줄러가 사용하는 보드입니다, 특별한 일이 아니라면 삭제하거나 편집하지 마세요!"
