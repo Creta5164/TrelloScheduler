@@ -24,76 +24,75 @@
     </head>
 
     <body>
+
         <script src="https://trello.com/1/client.js?key=32a1268ef9ed81c122676b3073731585"></script>
 
         <script src="main.js"></script>
 
-        <div class="view">
-            <ul class="navi">
-                <li><a href="#introduction">소개</a></li>
-                <li><a href="#howto">사용법</a></li>
-                <li style="float:right">
-                    <a href="https://github.com/Creta5164/TrelloScheduler">
-                        GitHub
-                    </a>
-                </li>
-                <li id="logout" onclick="logoutTrello();" style="float:right">
-                    <a>로그아웃</a>
-                </li>
-            </ul>
+        <ul class="navi">
+            <li><a href="#introduction">소개</a></li>
+            <li><a href="#howto">사용법</a></li>
+            <li style="float:right">
+                <a href="https://github.com/Creta5164/TrelloScheduler">
+                    GitHub
+                </a>
+            </li>
+            <li id="logout" onclick="logoutTrello();" style="float:right">
+                <a>로그아웃</a>
+            </li>
+        </ul>
 
-            <div class="container mainBG">
-                <div style="position:absolute; width:100%;">
-                    <h1 style="padding-top:350px">Trello 스케줄러</h1>
+        <div class="container mainBG">
+            <div style="position:absolute; width:100%;">
+                <h1 style="padding-top:350px">Trello 스케줄러</h1>
 
-                    <div class="button" onclick="loginTrello();">로그인</div>
-                </div>
-
-                <div style="background:rgba(0, 0, 0, 0.5); width:100%; height:100%;"></div>
+                <div class="button" onclick="loginTrello();">로그인</div>
             </div>
 
-            <a name="introduction"></a>
-            <div class="container" style="text-align:left; padding-top:200px; margin-bottom:250px">
-                <div style="padding-left:12%;">
-                    <h1>소개</h1>
-                </div>
+            <div style="background:rgba(0, 0, 0, 0.5); width:100%; height:100%;"></div>
+        </div>
 
-                <div class="text" style="padding-left:15%; padding-right:12%">
-                    Trello 스케줄러는, <b>요일별로 무엇을 할 지 적어놓으면, 오늘은 무엇을 해야 하는 지 알려줍니다.</b><br /><br />
-                    이게 전부입니다! 단순하죠?<br /><br /><br />
-                    Trello 스케줄러 제작자는 만들라는 게임은 안 만들고 놀기만 하는 모습에 반성하면서 만들었습니다.<br /><br />
-                    Trello 스케줄러는, <b>경각심을 심어주고, 작업했던 성과를 보면서 작업 포커싱을 잃지 않게끔 도와줍니다.</b><br /><br />
-                    <del>배그조아</del><br />
-                    <br />
-                </div>
+        <a name="introduction"></a>
+        <div class="container" style="text-align:left; padding-top:200px; margin-bottom:250px">
+            <div style="padding-left:12%;">
+                <h1>소개</h1>
             </div>
 
-            <a name="howto"></a>
-            <div class="container" style="text-align:left; padding-top:200px; margin-bottom:150px">
-                <div style="padding-left:12%;">
-                    <h1>사용법</h1>
-                </div>
+            <div class="text" style="padding-left:15%; padding-right:12%">
+                Trello 스케줄러는, <b>요일별로 무엇을 할 지 적어놓으면, 오늘은 무엇을 해야 하는 지 알려줍니다.</b><br /><br />
+                이게 전부입니다! 단순하죠?<br /><br /><br />
+                Trello 스케줄러 제작자는 만들라는 게임은 안 만들고 놀기만 하는 모습에 반성하면서 만들었습니다.<br /><br />
+                Trello 스케줄러는, <b>경각심을 심어주고, 작업했던 성과를 보면서 작업 포커싱을 잃지 않게끔 도와줍니다.</b><br /><br />
+                <del>배그조아</del><br />
+                <br />
+            </div>
+        </div>
 
-                <div class="text" style="padding-left:15%; padding-right:12%">
-                    기본적으로, Trello 스케줄러는 <b>요일별(월 화 수 목 금 토 일)로 등록한 보드의 목록</b>을 보여줍니다.<br /><br />
-                    만약에 등록했던 일과를 해결했다면, <b>특정 보드로 등록했던 내용을 보낼 수 있습니다.</b><br /><br />
-                    요일별로 표시되는 내용들은, 자신의 보드 목록에 Trello 스케줄러가 새로운 보드를 만들어서 관리합니다.<br /><sup>(TrelloScheduler라는 이름을 사용하게 됩니다.)</sup><br /><br />
-                    그 외 기능은 없습니다.<br /><sup>(진짜에요)</sup><br /><br />
-                    활용하기 좋은 방법 중 하나는, <a href="steam://store/431960/">월페이퍼 엔진</a>과 함께 사용하는 것입니다.<br />
-                    제가 사용하고자 했던 순기능입니다. <b>바탕화면에서 바로 무엇을 했었고 무엇을 해야 하는 지 바로 알 수 있어</b> 동기부여를 돕습니다.<br /><br />
-                    <br />
-                </div>
+        <a name="howto"></a>
+        <div class="container" style="text-align:left; padding-top:200px; margin-bottom:150px">
+            <div style="padding-left:12%;">
+                <h1>사용법</h1>
             </div>
 
-            <div class="container mainEndBG">
-                <div style="position:absolute; width:100%;">
-                    <div class="text" style="margin-bottom:10px; padding-top:450px;">딱히 별건 없지만<br />사용해볼래요?</div>
-
-                    <div class="button" onclick="loginTrello();">로그인</div>
-                </div>
-
-                <div style="background:rgba(0, 0, 0, 0.5); width:100%; height:100%;"></div>
+            <div class="text" style="padding-left:15%; padding-right:12%">
+                기본적으로, Trello 스케줄러는 <b>요일별(월 화 수 목 금 토 일)로 등록한 보드의 목록</b>을 보여줍니다.<br /><br />
+                만약에 등록했던 일과를 해결했다면, <b>특정 보드로 등록했던 내용을 보낼 수 있습니다.</b><br /><br />
+                요일별로 표시되는 내용들은, 자신의 보드 목록에 Trello 스케줄러가 새로운 보드를 만들어서 관리합니다.<br /><sup>(TrelloScheduler라는 이름을 사용하게 됩니다.)</sup><br /><br />
+                그 외 기능은 없습니다.<br /><sup>(진짜에요)</sup><br /><br />
+                활용하기 좋은 방법 중 하나는, <a href="steam://store/431960/">월페이퍼 엔진</a>과 함께 사용하는 것입니다.<br />
+                제가 사용하고자 했던 순기능입니다. <b>바탕화면에서 바로 무엇을 했었고 무엇을 해야 하는 지 바로 알 수 있어</b> 동기부여를 돕습니다.<br /><br />
+                <br />
             </div>
+        </div>
+
+        <div class="container mainEndBG">
+            <div style="position:absolute; width:100%;">
+                <div class="text" style="margin-bottom:10px; padding-top:450px;">단순한 요일별 스케줄러,<br/>사용해볼래요?</div>
+
+                <div class="button" onclick="loginTrello();">로그인</div>
+            </div>
+
+            <div style="background:rgba(0, 0, 0, 0.5); width:100%; height:100%;"></div>
         </div>
     </body>
 </html>
