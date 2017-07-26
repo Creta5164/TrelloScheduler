@@ -82,6 +82,28 @@ h1 {
     vertical-align:bottom;
 }
 
+.container .middleHelper {
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+}
+
+.container .symbol {
+    vertical-align:middle;
+    margin-left:5%;
+    margin-right:5%;
+    width:64px;
+    height:auto;
+}
+
+.container .symbol2 {
+    vertical-align:middle;
+    margin-left:5%;
+    margin-right:5%;
+    width:58px;
+    height:auto;
+}
+
 .text {
 	color: white;
 	font-size: 18pt;
