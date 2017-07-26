@@ -56,8 +56,8 @@ function loadProgram() {
 }
 
 function CheckSchedulerBoardExists(list) {
-    for (var board in list)
-        console.log(board);
+    for (var i = 0, len = list.length; i < len; i++)
+        console.log(list[i]);
 }
 
 function LoadFailed()
