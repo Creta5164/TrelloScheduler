@@ -1,7 +1,7 @@
 ﻿var loginState;
 
 function init()  {
-    loginState = Trello.authorized;
+    loginState = Trello.authorized();
     document.getElementById("logout").style.display = loginState ? "list-item" : "none";
 }
 
