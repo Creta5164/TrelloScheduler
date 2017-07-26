@@ -1,6 +1,11 @@
 ﻿var loginState;
 const schedulerBoardID = "TrelloScheduler";
 
+function init()
+{
+
+}
+
 function loginTrello()
 {
     Trello.authorize({
