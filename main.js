@@ -84,7 +84,7 @@ function ClearSchedulerCards(force) {
     //강제 청소
     if (force) {
         Trello.get("/boards/" + schedulerBoardData.id + "/lists",
-            DeleteCards,
+            InitCards,
             LoadFailed);
 
         return;
@@ -111,10 +111,17 @@ function CheckSchedulerBoardExists(list) {
     );
 }
 
-//카드를 모두 지웁니다.
-function DeleteCards(list) {
+//스케줄러의 카드를 초기화합니다.
+function InitCards(list) {
     for (var i = 0, len = list.length; i < len; i++)
-        Trello.put("/lists/" + list[i].id + "/closed?value=true");
+        Trello.put("/lists/" + list[i].id + "/closed?value=true", i == len - 1 ? InitAddCards : null);
+}
+
+//스케줄러의 카드를 초기화(추가)합니다.
+function InitAddCards(list) {
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    for (var i = 0, len = 7; i < len; i++)
+        Trello.post("/lists?name=" + days[i] + "&idBoard=" + schedulerBoardData.id);
 }
 
 //로드 실패
