@@ -58,8 +58,9 @@ function loadProgram() {
 }
 
 function CheckSchedulerBoardExists() {
-    console.log(JSON.parse(Trello.members.get("me").responseText));
-    var userID = JSON.parse(Trello.members.get("me").responseText).id;
+    var userData = Trello.members.get("me");
+    var userID = userData.responseJSON.id;
+    console.log(userData.responseJSON);
     console.log(userID);
     var result = false;
 
