@@ -1,17 +1,22 @@
 ﻿var loginState;
 const schedulerBoardID = "TrelloScheduler";
 
-function init()
-{
+function init() {
 
 }
 
-function loginTrello()
-{
+function loginTrello() {
     Trello.authorize({
-        interactive: false,
-        success: onAuthorize
-    });
+    type: 'popup',
+    name: 'Trello 스케줄러',
+    scope: {
+        read: 'true',
+        write: 'true'
+    },
+    expiration: 'never',
+    success: Trello_LoginSuccess,
+    error: Trello_LoginFail
+});
 }
 
 //트렐로 로그인 시도
@@ -29,36 +34,30 @@ function logoutTrello() {
 }
 
 //트렐로 로그인 성공
-function Trello_LoginSuccess()
-{
+function Trello_LoginSuccess() {
     loginState = true;
     document.getElementById("logout").style.display = "list-item";
     loadProgram();
 }
 
 //트렐로 로그인 실패
-function Trello_LoginFail()
-{
+function Trello_LoginFail() {
     alert("로그인에 실패했습니다.");
     document.getElementById("logout").style.display = "none";
 }
 
 //Trello 스케줄러를 시작합니다.
-function loadProgram()
-{
-    
-    if (CheckSchedulerBoardExists())
-    {
+function loadProgram() {
+
+    if (CheckSchedulerBoardExists()) {
 
     }
-    else
-    {
+    else {
 
     }
 }
 
-function CheckSchedulerBoardExists()
-{
+function CheckSchedulerBoardExists() {
     console.log(JSON.parse(Trello.members.get("me").responseText));
     var userID = JSON.parse(Trello.members.get("me").responseText).id;
     console.log(userID);
