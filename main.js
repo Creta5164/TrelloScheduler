@@ -41,10 +41,23 @@ function Trello_LoginFail()
 //Trello 스케줄러를 시작합니다.
 function loadProgram()
 {
-    Trello.boards.get("me", IDelegateLoadBoards);
+    
+    if (CheckSchedulerBoardExists())
+    {
+
+    }
+    else
+    {
+
+    }
 }
 
-function IDelegateLoadBoards(boards)
+function CheckSchedulerBoardExists()
 {
-    console.log(boards);
+    console.log(JSON.parse(Trello.members.get("me").responseText));
+    var userID = JSON.parse(Trello.members.get("me").responseText).id;
+    console.log(userID);
+    var result = false;
+
+    return false;
 }
