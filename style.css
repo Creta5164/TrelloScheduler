@@ -116,7 +116,11 @@ h1 {
 
 /* Wallpaper Engine */
 @media screen and (device-width: 100vw) and (device-height: 100vh) {
-    
+
+    .centerDevice {
+        padding-top:45vh;
+    }
+
     .wallpaperHide {
         display:none;
     }
