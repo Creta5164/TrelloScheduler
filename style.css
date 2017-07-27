@@ -114,12 +114,16 @@ h1 {
     text-decoration: underline;
 }
 
+.container.mainBG, .container.mainEndBG {
+    height: 100vh;
+}
+
+.centerDevice {
+    padding-top: 45vh;
+}
+
 /* Wallpaper Engine */
 @media screen and (device-width: 100vw) and (device-height: 100vh) {
-
-    .centerDevice {
-        padding-top:45vh;
-    }
 
     .wallpaperHide {
         display:none;
@@ -127,10 +131,6 @@ h1 {
 
     .container.mainBG {
         display:block;
-    }
-
-    .container.mainBG, .container.mainEndBG {
-        height: 100vh;
     }
 }
 
