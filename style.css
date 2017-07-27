@@ -17,11 +17,11 @@ h1 {
 }
 
 .navi {
-    top:0;
-	width:100%;
+    top: 0;
+    width: 100%;
     list-style-type: none;
-	position:fixed;
-    z-index:1;
+    position: fixed;
+    z-index: 1;
 }
 
 .navi li {

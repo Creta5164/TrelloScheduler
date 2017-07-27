@@ -13,6 +13,19 @@ function init() {
     if (window.location.hash.includes("#token=") &&
         window.location.hash.split("#token=")[1].length != 0)
         loginTrello();
+
+
+}
+
+function updateLoginElements()
+{
+    var i, list = document.getElementsByClassName("logIn");
+    for (i = 0; i < list.length; i++)
+        list[i].style.display = loginState ? "" : "none";
+
+    list = document.getElementsByClassName("logOut");
+    for (i = 0; i < list.length; i++)
+        list[i].style.display = !loginState ? "" : "none";
 }
 
 //트렐로에 로그인 요청을 보냅니다.
@@ -33,7 +46,7 @@ function loginTrello() {
 //트렐로가 로그인을 시도했을 때 호출합니다.
 function onAuthorize() {
     loginState = Trello.authorized();
-    document.getElementById("logout").style.display = loginState ? "list-item" : "none";
+    updateLoginElements();
 
     if (loginState && !programLoaded) loadProgram(0);
 }
