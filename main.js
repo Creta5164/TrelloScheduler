@@ -8,6 +8,9 @@ function init() {
     loginState = false;
     programLoaded = false;
     firstCreated = false;
+
+    if (window.location.hash.includes("#token="))
+        loginTrello();
 }
 
 function loginTrello() {
