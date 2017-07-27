@@ -17,8 +17,7 @@ function init() {
     updateLoginElements();
 }
 
-function updateLoginElements()
-{
+function updateLoginElements() {
     var i, list = document.getElementsByClassName("logIn");
     for (i = 0; i < list.length; i++)
         list[i].style.display = loginState ? "" : "none";
@@ -62,7 +61,7 @@ function logoutTrello() {
 //트렐로에 로그인이 성공했을 때 호출됩니다.
 function Trello_LoginSuccess() {
     loginState = true;
-    document.getElementById("logout").style.display = "list-item";
+    updateLoginElements();
     loadProgram(0);
 }
 
@@ -86,7 +85,7 @@ function loadProgram(steps, state) {
             );
             return;
         case 1:
-            
+
             if (state == "new")
                 InitSchedulerLists();
 
@@ -119,9 +118,9 @@ function CheckSchedulerBoardExists(list) {
 
     firstCreated = true;
     Trello.rest('POST', 'boards', {
-            name: schedulerBoardName,
-            desc: "Trello 스케줄러가 사용하는 보드입니다, 특별한 일이 아니라면 삭제하거나 편집하지 마세요!"
-        },
+        name: schedulerBoardName,
+        desc: "Trello 스케줄러가 사용하는 보드입니다, 특별한 일이 아니라면 삭제하거나 편집하지 마세요!"
+    },
         function (result) { loadProgram(0); },
         LoadFailed
     );
@@ -147,4 +146,5 @@ function LoadFailed() {
     programLoaded = false;
     alert("통신하는 도중, 오류가 발생했습니다.");
     logoutTrello();
+    window.location.reload();
 }
