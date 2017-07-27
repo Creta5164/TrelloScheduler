@@ -4,6 +4,7 @@ let firstCreated;
 const schedulerBoardName = "TrelloScheduler";
 let schedulerBoardData;
 
+//주 진입부입니다.
 function init() {
     loginState = false;
     programLoaded = false;
@@ -11,12 +12,10 @@ function init() {
 
     if (window.location.hash.includes("#token=") &&
         window.location.hash.split("#token=")[1].length != 0)
-    {
-        console.log("token exist");
-    }
-        //loginTrello();
+        loginTrello();
 }
 
+//트렐로에 로그인 요청을 보냅니다.
 function loginTrello() {
     Trello.authorize({
         type: 'redirect',
@@ -31,7 +30,7 @@ function loginTrello() {
     });
 }
 
-//트렐로 로그인 시도
+//트렐로가 로그인을 시도했을 때 호출합니다.
 function onAuthorize() {
     loginState = Trello.authorized();
     document.getElementById("logout").style.display = loginState ? "list-item" : "none";
@@ -39,7 +38,7 @@ function onAuthorize() {
     if (loginState && !programLoaded) loadProgram(0);
 }
 
-//트렐로 로그아웃
+//트렐로에 로그아웃 요청을 보냅니다.
 function logoutTrello() {
     Trello.deauthorize();
     onAuthorize();
@@ -47,14 +46,14 @@ function logoutTrello() {
     window.location.reload();
 }
 
-//트렐로 로그인 성공
+//트렐로에 로그인이 성공했을 때 호출됩니다.
 function Trello_LoginSuccess() {
     loginState = true;
     document.getElementById("logout").style.display = "list-item";
     loadProgram(0);
 }
 
-//트렐로 로그인 실패
+//트렐로에 로그인이 실패됐을 때 호출됩니다.
 function Trello_LoginFail() {
     alert("계정 연동에 실패했습니다.");
 }
@@ -76,7 +75,7 @@ function loadProgram(steps, state) {
         case 1:
             
             if (state == "new")
-                InitSchedulerLists(true);
+                InitSchedulerLists();
 
             return;
     }
@@ -86,16 +85,13 @@ function loadProgram(steps, state) {
 }
 
 //스케줄러 보드의 카드를 전부 지웁니다.
-function InitSchedulerLists(force) {
+function InitSchedulerLists() {
     if (programLoaded) return;
-    //강제 청소
-    if (force) {
-        Trello.get("/boards/" + schedulerBoardData.id + "/lists",
-            InitLists,
-            LoadFailed);
 
-        return;
-    }
+    Trello.get("/boards/" + schedulerBoardData.id + "/lists",
+        InitLists,
+        LoadFailed
+    );
 }
 
 //보드를 새로 만들 지 결정합니다, 이미 있는 경우 해당 보드 데이터를 가져옵니다.
@@ -133,7 +129,7 @@ function InitAddLists(list) {
         Trello.post("/lists?name=" + days[i] + "&idBoard=" + schedulerBoardData.id);
 }
 
-//로드 실패
+//트렐로가 요청에 실패했을 때 호출됩니다.
 function LoadFailed() {
     programLoaded = false;
     alert("통신하는 도중, 오류가 발생했습니다.");
