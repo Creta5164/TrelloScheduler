@@ -10,7 +10,7 @@ function init() {
     firstCreated = false;
 
     if (window.location.hash.includes("#token="))
-        loginTrello();
+        //loginTrello();
 }
 
 function loginTrello() {
