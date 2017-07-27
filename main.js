@@ -12,7 +12,7 @@ function init() {
 
 function loginTrello() {
     Trello.authorize({
-        type: 'popup',
+        type: 'redirect',
         name: 'Trello 스케줄러',
         scope: {
             read: 'true',
