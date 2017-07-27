@@ -9,7 +9,7 @@ function init() {
     programLoaded = false;
     firstCreated = false;
 
-    if (window.location.hash.includes("#token="))
+    if (window.location.hash.includes("#token="));
         //loginTrello();
 }
 
