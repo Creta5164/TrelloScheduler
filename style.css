@@ -113,3 +113,29 @@ h1 {
     color: #87cefa;
     text-decoration: underline;
 }
+
+/* Wallpaper Engine */
+@media screen and (device-width: 100vw) and (device-height: 100vh) {
+    
+    .wallpaperHide {
+        display:none;
+    }
+
+    .container.mainBG {
+        display:block;
+    }
+
+    .container.mainBG, .container.mainEndBG {
+        height: 100vh;
+    }
+}
+
+/* Tablet */
+@media screen and (min-width: 960px) {
+
+}
+
+/* Mobile */
+@media screen and (min-width: 480px) {
+
+}
