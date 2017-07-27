@@ -9,7 +9,11 @@ function init() {
     programLoaded = false;
     firstCreated = false;
 
-    if (window.location.hash.includes("#token="));
+    if (window.location.hash.includes("#token=") &&
+        window.location.hash.split("#token=")[1].length != 0)
+    {
+        console.log("token exist");
+    }
         //loginTrello();
 }
 
