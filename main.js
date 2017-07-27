@@ -14,7 +14,7 @@ function init() {
         window.location.hash.split("#token=")[1].length != 0)
         loginTrello();
 
-
+    updateLoginElements();
 }
 
 function updateLoginElements()
