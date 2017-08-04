@@ -173,6 +173,7 @@ function InitLists(list) {
     for (var i = 0, len = 7; i < len; i++)
         setTimeout(function (name) { Trello.post("/lists?name=" + name + "&idBoard=" + schedulerBoardData.id, RInitListLoaded, LoadFailed); }
             , 500 * i, days[i]);
+    //타임아웃보다 델리게이트처럼 순서대로 실행되야 좋지만, 일단 임시로 타임아웃 사용
 }
 
 //로딩 상태를 업데이트합니다.
