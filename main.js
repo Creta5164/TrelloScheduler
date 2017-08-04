@@ -10,6 +10,7 @@ let firstCreated;                                //최초로 보드가 생성된
 let schedulerBoardData;                          //Trello 스케줄러가 생성한 보드의 데이터 (Object)
 
 let requestCall;                                 
+let loadState;                                   
 
 //주 진입부입니다.
 function init() {
@@ -81,16 +82,23 @@ function Trello_LoginFail() {
 //Trello 스케줄러를 시작합니다.
 function loadProgram(steps, state) {
     if (programLoaded) return;
+
+    document.getElementById("loadingState").innerText = "준비하고 있습니다, 잠시만 기다려주세요...";
+
     switch (steps) {
         default:
             logoutTrello();
             return;
 
         case 0:
+
+            document.getElementById("loadingState").innerText = "Trello 스케줄러 보드를 확인하는 중...";
+
             Trello.get("/members/me/boards/",
                 CheckSchedulerBoardExists,
                 LoadFailed
             );
+
             return;
         case 1:
 
@@ -112,10 +120,13 @@ function CheckSchedulerBoardExists(list) {
     if (programLoaded) return;
     for (var i = 0, len = list.length; i < len; i++)
         if (list[i].name == schedulerBoardName) {
+            document.getElementById("loadingState").innerText = "보드의 상태를 확인하는 중...";
             schedulerBoardData = list[i];
             loadProgram(1, firstCreated ? "new" : null);
             return;
         }
+
+    document.getElementById("loadingState").innerText = "Trello 스케줄러 보드를 생성하는 중...";
 
     firstCreated = true;
     Trello.rest('POST', 'boards', {
@@ -133,6 +144,8 @@ function InitSchedulerLists() {
 
     requestCall = [0, 0];
 
+    document.getElementById("loadingState").innerText = "Trello 스케줄러 보드를 준비하고 있습니다...";
+
     Trello.get("/boards/" + schedulerBoardData.id + "/lists",
         InitLists,
         LoadFailed
@@ -142,6 +155,8 @@ function InitSchedulerLists() {
 //스케줄러의 카드를 초기화합니다.
 function InitLists(list) {
     requestCall = [0, list.length + 7];
+
+    document.getElementById("loadingState").innerText = "요일별 리스트를 준비하는 중...(0 / " + requestCall[1] + ")";
 
     for (var i = 0, len = list.length; i < len; i++)
         Trello.put("/lists/" + list[i].id + "/closed?value=true", RInitListLoaded, LoadFailed);
@@ -155,6 +170,8 @@ function RInitListLoaded()
 {
     if (requestCall == null) return;
     console.log(++requestCall[0], requestCall[1]);
+
+    document.getElementById("loadingState").innerText = "요일별 리스트를 준비하는 중...(" + requestCall[0] + " / " + requestCall[1] + ")";
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
