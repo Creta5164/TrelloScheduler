@@ -109,7 +109,7 @@ function loadProgram(steps, state) {
 
         case 2:
 
-            document.getElementById("loadingState").innerText = "트렐로 보드는 준비가 됐는데, 이건 아직 준비가 안됐어요. 힝<br>로딩 상태 변경 잘 되네용";
+            document.getElementById("loadingState").innerHTML = "트렐로 보드는 준비가 됐는데, 이건 아직 준비가 안됐어요. 힝<br>로딩 상태 변경 잘 되네용";
 
             return;
     }
