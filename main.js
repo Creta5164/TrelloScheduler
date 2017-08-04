@@ -171,7 +171,8 @@ function InitLists(list) {
 
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     for (var i = 0, len = 7; i < len; i++)
-        Trello.post("/lists?name=" + days[i] + "&idBoard=" + schedulerBoardData.id, RInitListLoaded, LoadFailed);
+        setTimeout(function () { Trello.post("/lists?name=" + days[i] + "&idBoard=" + schedulerBoardData.id, RInitListLoaded, LoadFailed); }
+            , 500 * i);
 }
 
 //로딩 상태를 업데이트합니다.
