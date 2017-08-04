@@ -151,7 +151,7 @@ function InitSchedulerLists() {
         LoadFailed
     );
 }
-
+ 
 //스케줄러의 카드를 초기화합니다.
 function InitLists(list) {
     requestCall = [0, list.length + 7];
