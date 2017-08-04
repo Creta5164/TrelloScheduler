@@ -169,7 +169,7 @@ function InitLists(list) {
     for (var i = 0, len = list.length; i < len; i++)
         Trello.put("/lists/" + list[i].id + "/closed?value=true", RInitListLoaded, LoadFailed);
 
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].reverse();
     for (var i = 0, len = 7; i < len; i++)
         setTimeout(function (name) { Trello.post("/lists?name=" + name + "&idBoard=" + schedulerBoardData.id, RInitListLoaded, LoadFailed); }
             , 500 * i, days[i]);
