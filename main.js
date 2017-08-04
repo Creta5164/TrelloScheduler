@@ -106,6 +106,12 @@ function loadProgram(steps, state) {
                 InitSchedulerLists();
 
             return;
+
+        case 2:
+
+            document.getElementById("loadingState").innerText = "트렐로 보드는 준비가 됐는데, 이건 아직 준비가 안됐어요. 힝<br>로딩 상태 변경 잘 되네용";
+
+            return;
     }
 
     //finish a loading content
@@ -166,10 +172,13 @@ function InitLists(list) {
         Trello.post("/lists?name=" + days[i] + "&idBoard=" + schedulerBoardData.id, RInitListLoaded, LoadFailed);
 }
 
+//로딩 상태를 업데이트합니다.
 function RInitListLoaded()
 {
     if (requestCall == null) return;
-    console.log(++requestCall[0], requestCall[1]);
+
+    if (++requestCall[0] == requestCall[1])
+        setTimeout(loadProgram, 1000, 2);
 
     document.getElementById("loadingState").innerText = "요일별 리스트를 준비하는 중...(" + requestCall[0] + " / " + requestCall[1] + ")";
 }
