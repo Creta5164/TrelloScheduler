@@ -104,6 +104,8 @@ function loadProgram(steps, state) {
 
             if (state == "new")
                 InitSchedulerLists();
+            else
+                setTimeout(loadProgram, 1000, 2);
 
             return;
 
