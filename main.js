@@ -21,6 +21,8 @@ function init() {
     if (window.location.hash.includes("#token=") &&
         !window.location.hash.split("#token=")[1].includes("#token"))
         loginTrello();
+    else
+        window.location.href = window.location.hash.split("#token=")[0];
 
     updateLoginElements();
 }
