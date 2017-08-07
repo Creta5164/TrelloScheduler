@@ -19,7 +19,7 @@ function init() {
     firstCreated = false;
 
     if (window.location.hash.includes("#token=") &&
-        window.location.hash.split("#token=")[1].length != 0)
+        !window.location.hash.split("#token=")[1].includes("#token"))
         loginTrello();
 
     updateLoginElements();
