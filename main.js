@@ -241,7 +241,7 @@ function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
 //프로그램 로드를 위한 처리 완료 함수입니다.
 function RunLoadAsyncResponse() {
     if (++requestCall.async >= requestCall.limit) {
-        if (getType.toString.call(requestCall.finish) === '[object Function]')
+        if ({}.toString.call(requestCall.finish) === '[object Function]')
             setTimeout(requestCall.finishFunction, 500);
         else
             setTimeout(loadProgram, 500, requestCall.finish);
@@ -252,7 +252,7 @@ function RunLoadAsyncResponse() {
     } else 
         requestCall.call(requestCall.async);
 
-    document.getElementById("loadingState").innerText = text + "(" + requestCall.async + " / " + requestCall.limit + ")";
+    document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 }
 
 //로딩 상태를 업데이트합니다.
