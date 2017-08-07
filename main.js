@@ -234,7 +234,7 @@ function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
 
     document.getElementById("loadingState").innerText = text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 
-    callAsyncFunction(async);
+    callAsyncFunction(0);
 
 }
 
