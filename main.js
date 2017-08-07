@@ -223,7 +223,7 @@ function ICreateLists(index) {
     Trello.post("/lists?name=" + rdays[index] + "&idBoard=" + schedulerBoardData.id, RunLoadAsyncResponse, LoadFailed);
 }
 
-//프로그램 로드를 위한 작업을 실행합니다.
+//동기 작업을 시작합니다.
 function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
 
     if (limit == null || text == null || callAsyncFunction == null ||
@@ -240,10 +240,9 @@ function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
     document.getElementById("loadingState").innerText = text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 
     callAsyncFunction(0);
-
 }
 
-//프로그램 로드를 위한 처리 완료 함수입니다.
+//프로그램 로드를 위한 동기 작업을 처리합니다.
 function RunLoadAsyncResponse() {
     if (++requestCall.async >= requestCall.limit) {
         if ({}.toString.call(requestCall.finish) === '[object Function]')
@@ -251,13 +250,16 @@ function RunLoadAsyncResponse() {
         else
             setTimeout(loadProgram, 500, requestCall.finish);
 
-        requestCall.limit = requestCall.text =
-            requestCall.call = requestCall.async = null;
-
+        setTimeout(RunLoadAsyncFinish, 550);
     } else 
         requestCall.call(requestCall.async);
 
     document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
+}
+
+//프로그램 로드를 위한 동기 작업을 마칩니다.
+function RunLoadAsyncFinish() {
+    requestCall = null;
 }
 
 //로딩 상태를 업데이트합니다.
