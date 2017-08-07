@@ -184,8 +184,12 @@ function CheckSchedulerBoardExists(list) {
 //보드의 리스트에 문제가 없는 지 확인합니다.
 function CheckSchedulerBoardStatus(list) {
     if (programLoaded) return;
-    schedulerBoardList = list.slice(0);
-    console.log(list);
+    schedulerBoardList = list;
+
+    if (schedulerBoardList.length == 0) {
+        loadProgram(2);
+        return;
+    }
 
     var curruption;
     for (var j, i = 0; i < days.length; i++) {
