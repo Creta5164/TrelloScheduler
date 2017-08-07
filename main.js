@@ -11,6 +11,7 @@ let schedulerBoardData;                          //Trello 스케줄러가 생성
 
 let requestCall;                                 
 let loadState;                                   
+let subLoadState;                                
 
 //주 진입부입니다.
 function init() {
@@ -21,8 +22,6 @@ function init() {
     if (window.location.hash.includes("#token=") &&
         !window.location.hash.split("#token=")[1].includes("#token"))
         loginTrello();
-    else
-        window.location.href = window.location.hash.split("#token=")[0];
 
     updateLoginElements();
 }
@@ -89,6 +88,8 @@ function loadProgram(steps, state) {
 
     document.getElementById("titleFade").style.background = "rgba(0, 153, 255, 1);";
 
+    loadState = steps;
+
     switch (steps) {
         default:
             logoutTrello();
@@ -134,7 +135,10 @@ function CheckSchedulerBoardExists(list) {
         if (list[i].name == schedulerBoardName) {
             document.getElementById("loadingState").innerText = "보드의 상태를 확인하는 중...";
             schedulerBoardData = list[i];
-            loadProgram(1, firstCreated ? "new" : null);
+
+
+
+            //loadProgram(1, firstCreated ? "new" : null);
             return;
         }
 
@@ -173,16 +177,30 @@ function InitLists(list) {
     for (var i = 0, len = list.length; i < len; i++)
         Trello.put("/lists/" + list[i].id + "/closed?value=true", RInitListLoaded, LoadFailed);
 
+    subLoadState = 0;
+    ICreateLists();
+}
+
+//스케줄러의 보드를 하나씩 순서대로 추가합니다.
+function ICreateLists() {
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].reverse();
-    for (var i = 0, len = 7; i < len; i++)
-        setTimeout(function (name) { Trello.post("/lists?name=" + name + "&idBoard=" + schedulerBoardData.id, RInitListLoaded, LoadFailed); }
-            , 500 * i, days[i]);
-    //타임아웃보다 델리게이트처럼 순서대로 실행되야 좋지만, 일단 임시로 타임아웃 사용
+
+    if (days.length > subLoadState) {
+        Trello.post("/lists?name=" + days[subLoadState] + "&idBoard=" + schedulerBoardData.id, ICreateLists, LoadFailed);
+        subLoadState++;
+    } else {
+        subLoadState = 0;
+
+        loadProgram(2);
+
+        return;
+    }
+
+    if (subLoadState != 0) RInitListLoaded();
 }
 
 //로딩 상태를 업데이트합니다.
-function RInitListLoaded()
-{
+function RInitListLoaded() {
     if (requestCall == null) return;
 
     if (++requestCall[0] == requestCall[1])
