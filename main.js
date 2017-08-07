@@ -85,6 +85,8 @@ function loadProgram(steps, state) {
 
     document.getElementById("loadingState").innerText = "준비하고 있습니다, 잠시만 기다려주세요...";
 
+    document.getElementById("titleFade").style.background = "rgba(0, 153, 255, 1);";
+
     switch (steps) {
         default:
             logoutTrello();
@@ -111,7 +113,7 @@ function loadProgram(steps, state) {
 
         case 2:
 
-            document.getElementById("loadingState").innerHTML = "트렐로 보드는 준비가 됐는데, 이건 아직 준비가 안됐어요. 힝<br>로딩 상태 변경 잘 되네용";
+
 
             return;
     }

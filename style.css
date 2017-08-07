@@ -16,6 +16,15 @@ h1 {
     font-size: 48pt;
 }
 
+.loader {
+    background:url('img/icon/loader_icon.gif');
+    background-position:center;
+    background-size:cover;
+    width:32px;
+    height:32px;
+    display:inline-block;
+}
+
 .navi {
     top: 0;
     width: 100%;
@@ -114,7 +123,7 @@ h1 {
     text-decoration: underline;
 }
 
-.container.mainBG, .container.mainEndBG {
+.container.mainBG, .container.mainEndBG, .full {
     height: 100vh;
 }
 
