@@ -15,6 +15,7 @@ let subLoadState;
 
 //주 진입부입니다.
 function init() {
+    console.log("what");
     loginState = false;
     programLoaded = false;
     firstCreated = false;
