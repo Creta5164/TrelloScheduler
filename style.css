@@ -113,10 +113,20 @@ h1 {
     height:auto;
 }
 
+.pageTitle {
+    padding-top:100px;
+    padding-left:12%;
+}
+
 .text {
 	color: white;
 	font-size: 18pt;
-} 
+}
+
+.text.desc {
+    padding-left: 15%;
+    padding-right: 12%
+}
 
 .text a {
     color: #87cefa;
@@ -149,6 +159,35 @@ h1 {
 }
 
 /* Mobile */
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
 
+    .pageTitle {
+        padding-top: 75px;
+        padding-left: 6%;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .text {
+        font-size: 12pt;
+    }
+
+    .text.desc {
+        padding-left: 7%;
+        padding-right: 6%
+    }
+
+    .container .symbol {
+        margin-left: 3.5%;
+        margin-right: 3.5%;
+        width: 48px;
+    }
+
+    .container .symbol2 {
+        margin-left: 3.5%;
+        margin-right: 3.5%;
+        width: 43.5px;
+    }
 }

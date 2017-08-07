@@ -44,10 +44,11 @@
 
         <div class="container mainBG">
             <div style="position:absolute; width:100%;">
-                <div class="loader logIn"></div>
                 <h1 class="centerDevice">Trello 스케줄러</h1>
 
-                <div class="button logOut" onclick="loginTrello();">로그인</div><div class="text logIn" id="loadingState" style="width:100%; display:inline-block;"></div>
+                <div class="button logOut" onclick="loginTrello();">로그인</div>
+                <div class="text logIn" id="loadingState" style="width:100%; display:inline-block;"></div>
+                <div class="loader logIn" style="margin-top:16px"></div>
             </div>
 
             <div id="titleFade" style="background:rgba(0, 0, 0, 0.5); width:100%; height:100%;"></div>
@@ -56,11 +57,11 @@
         <a name="introduction"></a>
         <div class="container logOut" style="text-align:left; height:auto; margin-bottom:100px;">
             <div style="width:100%; height:100%;">
-                <div style="padding-top:100px; padding-left:12%;">
+                <div class="pageTitle">
                     <h1>소개</h1>
                 </div>
 
-                <div class="text" style="padding-left:15%; padding-right:12%">
+                <div class="text desc">
                     Trello 스케줄러는, <b>요일별로 무엇을 할 지 적어놓으면, 오늘은 무엇을 해야 하는 지 알려줍니다.</b><br /><br />
                     이게 전부입니다! 단순하죠?<br /><br /><br />
                     Trello 스케줄러 제작자는 만들라는 게임은 안 만들고 놀기만 하는 모습에 반성하면서 만들었습니다.<br /><br />
@@ -74,11 +75,11 @@
         <a name="howto"></a>
         <div class="container logOut" style="text-align:left; height:auto; margin-bottom:100px;">
             <div style="width:100%; height:100%;">
-                <div style="padding-top:100px; padding-left:12%;">
+                <div class="pageTitle">
                     <h1>사용법</h1>
                 </div>
 
-                <div class="text" style="padding-left:15%; padding-right:12%">
+                <div class="text desc">
                     기본적으로, Trello 스케줄러는 <b>요일별(월 화 수 목 금 토 일)로 등록한 보드의 목록</b>을 보여줍니다.<br /><br />
                     만약에 등록했던 일과를 해결했다면, <b>특정 보드로 등록했던 내용을 보낼 수 있습니다.</b><br /><br />
                     요일별로 표시되는 내용들은, 자신의 보드 목록에 Trello 스케줄러가 새로운 보드를 만들어서 관리합니다.<br /><sup>(TrelloScheduler라는 이름을 사용하게 됩니다.)</sup><br /><br />
