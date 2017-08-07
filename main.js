@@ -248,27 +248,15 @@ function RunLoadAsyncResponse() {
         if ({}.toString.call(requestCall.finish) === '[object Function]')
             setTimeout(requestCall.finishFunction, 500);
         else
-            setTimeout(loadProgram, 500, requestCall.finish);
+            setTimeout(loadProgram, 1000, requestCall.finish);
 
-        setTimeout(RunLoadAsyncFinish, 550);
+        requestCall.async = requestCall.limit;
+
+        setTimeout(RunLoadAsyncFinish, 1050);
     } else 
         requestCall.call(requestCall.async);
 
     document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
-}
-
-//로딩 상태를 업데이트합니다.
-function RunAsyncLoad() {
-    if (requestCall == null || programLoaded) return;
-
-    if (++requestCall[0] >= requestCall[1]) { 
-        if (getType.toString.call(requestCall[3]) === '[object Function]')
-            setTimeout(requestCall[3], 500);
-        else
-            setTimeout(loadProgram, 500, requestCall[3]);
-    }
-
-    document.getElementById("loadingState").innerText = requestCall[2] + "(" + requestCall[0] + " / " + requestCall[1] + ")";
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
