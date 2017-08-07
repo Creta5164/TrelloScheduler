@@ -209,6 +209,7 @@ function CheckSchedulerBoardStatus(list) {
 
 //스케줄러의 보드를 하나씩 순서대로 제거합니다.
 function IRemoveLists(index) {
+    console.log(index, schedulerBoardList[index]);
     Trello.put("/lists/" + schedulerBoardList[index].id + "/closed?value=true", IRemoveLists, LoadFailed);
 }
 
