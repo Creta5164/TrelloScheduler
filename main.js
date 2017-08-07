@@ -83,7 +83,7 @@ function Trello_LoginFail() {
 function loadProgram(steps, state) {
     if (programLoaded) return;
 
-    document.getElementById("loadingState").innerText = "준비하고 있습니다, 잠시만 기다려주세요...";
+    document.getElementById("loadingState").innerText = "준비하고 있습니다. 잠시만 기다려주세요...";
 
     document.getElementById("titleFade").style.background = "rgba(0, 153, 255, 1);";
 
