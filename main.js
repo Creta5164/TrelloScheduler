@@ -237,7 +237,7 @@ function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
         "async": 0
     };
 
-    document.getElementById("loadingState").innerText = text + "(" + requestCall.async + " / " + requestCall.limit + ")";
+    document.getElementById("loadingState").innerText = text + "(0 / " + requestCall.limit + ")";
 
     callAsyncFunction(0);
 }
@@ -249,11 +249,9 @@ function RunLoadAsyncResponse() {
         requestCall.async = requestCall.limit;
 
         if ({}.toString.call(requestCall.finish) === '[object Function]')
-            setTimeout(requestCall.finishFunction, 1000);
+            setTimeout(requestCall.finishFunction, 500);
         else
-            setTimeout(loadProgram, 1000, requestCall.finish);
-
-        setTimeout(RunLoadAsyncFinish, 1050);
+            setTimeout(loadProgram, 500, requestCall.finish);
     } else 
         requestCall.call(requestCall.async);
 
