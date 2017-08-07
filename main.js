@@ -4,14 +4,16 @@
 /////////////////////////////////////////////////////////////////
 
 const schedulerBoardName = "TrelloScheduler";    //Trello
+const days  = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const rdays = days.reverse();
 let loginState;                                  //로그인 상태 (bool)
 let programLoaded;                               //프로그램이 로드 된 상태 (bool)
 let firstCreated;                                //최초로 보드가 생성된 경우의 상태 (bool)
 let schedulerBoardData;                          //Trello 스케줄러가 생성한 보드의 데이터 (Object)
+let schedulerBoardList;                          //Trello 스케줄러의 리스트 목록 (Array > Object)
 
 let requestCall;                                 
 let loadState;                                   
-let subLoadState;                                
 
 //주 진입부입니다.
 function init() {
@@ -90,13 +92,14 @@ function loadProgram(steps, state) {
     document.getElementById("titleFade").style.background = "rgba(0, 153, 255, 1);";
 
     loadState = steps;
+    requestCall = null;
 
     switch (steps) {
         default:
-            logoutTrello();
+            LoadFailed();
             return;
-
-        case 0:
+            
+        case 0://보드를 찾습니다.
 
             document.getElementById("loadingState").innerText = "Trello 스케줄러 보드를 확인하는 중...";
 
@@ -106,18 +109,41 @@ function loadProgram(steps, state) {
             );
 
             return;
-        case 1:
+            
+        case 1://보드 안의 리스트가 정상인지 확인합니다.
 
-            if (state == "new")
-                InitSchedulerLists();
-            else
-                setTimeout(loadProgram, 1000, 2);
+            document.getElementById("loadingState").innerText = "보드의 리스트를 확인하는 중...";
+
+            Trello.get("/boards/" + schedulerBoardData.id + "/lists",
+                CheckSchedulerBoardStatus,
+                LoadFailed
+            );
 
             return;
 
-        case 2:
+        case 2://보드의 리스트를 모두 지웁니다.
 
+            RunLoadRequest(schedulerBoardList.length,
+                "리스트를 초기화하는 중...",
+                IRemoveLists,
+                3
+            );
+            
+            return;
 
+        case 3://보드에 요일별로 리스트를 추가합니다.
+
+            RunLoadRequest(rdays.length,
+                "요일별 리스트를 추가하는 중...",
+                ICreateLists,
+                4
+            );
+            
+            return;
+
+        case 4://프로그램을 준비합니다.
+
+            document.getElementById("loadingState").innerText = "로딩 완료!";
 
             return;
     }
@@ -132,14 +158,14 @@ function loadProgram(steps, state) {
  */
 function CheckSchedulerBoardExists(list) {
     if (programLoaded) return;
+    schedulerBoardData = null;
+
+    document.getElementById("loadingState").innerText = "Trello 스케줄러 보드를 찾는 중...";
+
     for (var i = 0, len = list.length; i < len; i++)
         if (list[i].name == schedulerBoardName) {
-            document.getElementById("loadingState").innerText = "보드의 상태를 확인하는 중...";
             schedulerBoardData = list[i];
-
-
-
-            //loadProgram(1, firstCreated ? "new" : null);
+            loadProgram(1, firstCreated ? "new" : null);
             return;
         }
 
@@ -155,59 +181,74 @@ function CheckSchedulerBoardExists(list) {
     );
 }
 
-//스케줄러 보드의 카드를 전부 지웁니다.
-function InitSchedulerLists() {
+//보드의 리스트에 문제가 없는 지 확인합니다.
+function CheckSchedulerBoardStatus(list) {
     if (programLoaded) return;
+    schedulerBoardList = list;
 
-    requestCall = [0, 0];
+    var curruption;
+    for (var j, i = 0; i < days.length; i++) {
+        curruption = true;
 
-    document.getElementById("loadingState").innerText = "Trello 스케줄러 보드를 준비하고 있습니다...";
+        for (j = 0; j < schedulerBoardList.length; j++) {
+            if (schedulerBoardList[j].name != days[i]) continue;
+            else {
+                curruption = false;
+                break;
+            }
+        }
 
-    Trello.get("/boards/" + schedulerBoardData.id + "/lists",
-        InitLists,
-        LoadFailed
-    );
+        if (curruption) {
+            loadProgram(2);
+            return;
+        }
+    }
+
+    loadProgram(4);
 }
- 
-//스케줄러의 카드를 초기화합니다.
-function InitLists(list) {
-    requestCall = [0, list.length + 7];
 
-    document.getElementById("loadingState").innerText = "요일별 리스트를 준비하는 중...(0 / " + requestCall[1] + ")";
-
-    for (var i = 0, len = list.length; i < len; i++)
-        Trello.put("/lists/" + list[i].id + "/closed?value=true", RInitListLoaded, LoadFailed);
-
-    subLoadState = 0;
-    ICreateLists();
+//스케줄러의 보드를 하나씩 순서대로 제거합니다.
+function IRemoveLists(index) {
+    Trello.put("/lists/" + schedulerBoardList[index].id + "/closed?value=true", IRemoveLists, LoadFailed);
 }
 
 //스케줄러의 보드를 하나씩 순서대로 추가합니다.
-function ICreateLists() {
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].reverse();
+function ICreateLists(index) {
+    Trello.post("/lists?name=" + rdays[index] + "&idBoard=" + schedulerBoardData.id, ICreateLists, LoadFailed);
+}
 
-    if (days.length > subLoadState) {
-        Trello.post("/lists?name=" + days[subLoadState] + "&idBoard=" + schedulerBoardData.id, ICreateLists, LoadFailed);
-        subLoadState++;
+//프로그램 로드를 위한 작업을 실행합니다.
+function RunLoadRequest(limit, text, callAsyncFunction, finishFunction, async) {
+
+    if (limit == null || text == null || callAsyncFunction == null ||
+        finishFunction == null || programLoaded) return;
+
+    if (async == null) async = 0;
+
+    document.getElementById("loadingState").innerText = text + "(" + async + " / " + limit + ")";
+
+    if (async >= limit) {
+        if (getType.toString.call(finishFunction) === '[object Function]')
+            setTimeout(finishFunction, 500);
+        else
+            setTimeout(loadProgram, 500, finishFunction);
     } else {
-        subLoadState = 0;
-
-        loadProgram(2);
-
-        return;
+        callAsyncFunction(async);
     }
-
-    if (subLoadState != 0) RInitListLoaded();
 }
 
 //로딩 상태를 업데이트합니다.
-function RInitListLoaded() {
-    if (requestCall == null) return;
+function RunAsyncLoad() {
+    if (requestCall == null || programLoaded) return;
 
-    if (++requestCall[0] == requestCall[1])
-        setTimeout(loadProgram, 1000, 2);
+    if (++requestCall[0] >= requestCall[1]) { 
+        if (getType.toString.call(requestCall[3]) === '[object Function]')
+            setTimeout(requestCall[3], 500);
+        else
+            setTimeout(loadProgram, 500, requestCall[3]);
+    }
 
-    document.getElementById("loadingState").innerText = "요일별 리스트를 준비하는 중...(" + requestCall[0] + " / " + requestCall[1] + ")";
+    document.getElementById("loadingState").innerText = requestCall[2] + "(" + requestCall[0] + " / " + requestCall[1] + ")";
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
