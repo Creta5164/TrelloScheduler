@@ -210,32 +210,49 @@ function CheckSchedulerBoardStatus(list) {
 //스케줄러의 보드를 하나씩 순서대로 제거합니다.
 function IRemoveLists(index) {
     console.log(index, schedulerBoardList[index]);
-    Trello.put("/lists/" + schedulerBoardList[index].id + "/closed?value=true", IRemoveLists, LoadFailed);
+    Trello.put("/lists/" + schedulerBoardList[index].id + "/closed?value=true", RunLoadAsyncResponse, LoadFailed);
 }
 
 //스케줄러의 보드를 하나씩 순서대로 추가합니다.
 function ICreateLists(index) {
-    Trello.post("/lists?name=" + rdays[index] + "&idBoard=" + schedulerBoardData.id, ICreateLists, LoadFailed);
+    Trello.post("/lists?name=" + rdays[index] + "&idBoard=" + schedulerBoardData.id, RunLoadAsyncResponse, LoadFailed);
 }
 
 //프로그램 로드를 위한 작업을 실행합니다.
-function RunLoadRequest(limit, text, callAsyncFunction, finishFunction, async) {
+function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
 
     if (limit == null || text == null || callAsyncFunction == null ||
         finishFunction == null || programLoaded) return;
+    
+    requestCall = {
+        "limit": limit,
+        "text": text,
+        "call": callAsyncFunction,
+        "finish": finishFunction,
+        "async": 0
+    };
 
-    if (async == null) async = 0;
+    document.getElementById("loadingState").innerText = text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 
-    document.getElementById("loadingState").innerText = text + "(" + async + " / " + limit + ")";
+    callAsyncFunction(async);
 
-    if (async >= limit) {
-        if (getType.toString.call(finishFunction) === '[object Function]')
-            setTimeout(finishFunction, 500);
+}
+
+//프로그램 로드를 위한 처리 완료 함수입니다.
+function RunLoadAsyncResponse() {
+    if (++requestCall.async >= requestCall.limit) {
+        if (getType.toString.call(requestCall.finish) === '[object Function]')
+            setTimeout(requestCall.finishFunction, 500);
         else
-            setTimeout(loadProgram, 500, finishFunction);
-    } else {
-        callAsyncFunction(async);
-    }
+            setTimeout(loadProgram, 500, requestCall.finish);
+
+        requestCall.limit = requestCall.text =
+            requestCall.call = requestCall.async = null;
+
+    } else 
+        requestCall.call(requestCall.async);
+
+    document.getElementById("loadingState").innerText = text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 }
 
 //로딩 상태를 업데이트합니다.
