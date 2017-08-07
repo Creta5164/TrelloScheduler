@@ -257,11 +257,6 @@ function RunLoadAsyncResponse() {
     document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 }
 
-//프로그램 로드를 위한 동기 작업을 마칩니다.
-function RunLoadAsyncFinish() {
-    requestCall = null;
-}
-
 //로딩 상태를 업데이트합니다.
 function RunAsyncLoad() {
     if (requestCall == null || programLoaded) return;
