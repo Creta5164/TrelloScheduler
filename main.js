@@ -185,6 +185,7 @@ function CheckSchedulerBoardExists(list) {
 function CheckSchedulerBoardStatus(list) {
     if (programLoaded) return;
     schedulerBoardList = list.slice(0);
+    console.log(list);
 
     var curruption;
     for (var j, i = 0; i < days.length; i++) {
