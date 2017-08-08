@@ -23,8 +23,8 @@ function init() {
     programLoaded = false;
     firstCreated = false;
 
-    if (window.location.hash.includes("#token=") &&
-        !window.location.hash.split("#token=")[1].includes("#token"))
+    if (window.location.hash.indexOf("#token=") == 0 &&
+        window.location.hash.split("#token=")[1].indexOf("#token") == -1)
         loginTrello();
 
     updateLoginElements();
