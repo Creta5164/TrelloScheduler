@@ -40,7 +40,7 @@ function updateLoginElements() {
     for (i = 0; i < list.length; i++)
         list[i].style.display = !loginState ? "" : "none";
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = loginState ? "hidden" : "auto";
 }
 
 //Trello에 로그인 요청을 보냅니다.
