@@ -96,7 +96,7 @@ function loadProgram(steps, state) {
 
     document.getElementById("loadingState").innerText = "준비하고 있습니다. 잠시만 기다려주세요...";
 
-    document.getElementById("titleFade").style.background = "rgba(0, 153, 255, 1);";
+    document.getElementById("titleFade").style.background = "rgba(0, 153, 255, 1)";
 
     loadState = steps;
     requestCall = null;
@@ -221,12 +221,26 @@ function CheckSchedulerBoardStatus(list) {
 
 //스케줄러의 보드를 하나씩 순서대로 제거합니다.
 function IRemoveLists(index) {
-    console.log(index, schedulerBoardList[index]);
+
+    //사용하는 데 필요한 요일의 리스트가 이미 있으면 제거하지 않음.
+    for (var i = 0; i < rdays.length; i++)
+        if (rdays[i] == schedulerBoardList[index].name) {
+            RunLoadAsyncResponse();
+            return;
+        }
+
     Trello.put("/lists/" + schedulerBoardList[index].id + "/closed?value=true", RunLoadAsyncResponse, LoadFailed);
 }
 
 //스케줄러의 보드를 하나씩 순서대로 추가합니다.
 function ICreateLists(index) {
+
+    //이미 해당 요일의 카드가 존재하면 추가하지 않고 진행.
+    for (var i = 0; i < schedulerBoardList.length; i++)
+        if (schedulerBoardList[i].name == rdays[index]) {
+            RunLoadAsyncResponse();
+            return;
+        }
     Trello.post("/lists?name=" + rdays[index] + "&idBoard=" + schedulerBoardData.id, RunLoadAsyncResponse, LoadFailed);
 }
 
