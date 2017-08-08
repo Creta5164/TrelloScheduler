@@ -17,7 +17,8 @@ let loadState;
 
 //주 진입부입니다.
 function init() {
-    console.log("what");
+    ShowCommandLineAlert();
+
     loginState = false;
     programLoaded = false;
     firstCreated = false;
@@ -264,4 +265,27 @@ function LoadFailed() {
     alert("통신하는 도중, 오류가 발생했습니다.");
     logoutTrello();
     window.location.reload();
+}
+
+function ShowCommandLineAlert() {
+    if ((/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor) ||
+        /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor))) {
+        console.log("%c개발자 외 출입금지", "font-family:'spoqa han sans'; font-size:40pt; color:red;");
+
+        console.log("%c잘 모르는 문자(텍스트, 스크립트 등)를 이곳에 붙여넣지 마세요.\nTrello 계정이 해커에게 악용될 수 있습니다!", "font-family:'spoqa han sans'; font-size:18pt; color:orange");
+    } else {
+        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
+            "@@@@@@@@@@@@@@@@@@개발자 외 출입금지@@@@@@@@@@@@@@@@@@@\n" +
+            "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
+            "@@                                                  @@\n" +
+            "@@  잘 모르는 문자(텍스트, 스크립트 등)를              @@\n" +
+            "@@  이곳에 붙여넣지 마세요.                           @@\n" +
+            "@@                                                  @@\n" +
+            "@@  Trello 계정이 해커에게 악용될 수 있습니다!         @@\n" +
+            "@@                                                  @@\n" +
+            "@@  > _                                             @@\n" +
+            "@@                                                  @@\n" +
+            "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
+        );
+    }
 }
