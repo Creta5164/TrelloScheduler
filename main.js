@@ -96,7 +96,7 @@ function loadProgram(steps, state) {
 
     document.getElementById("loadingState").innerText = "준비하고 있습니다. 잠시만 기다려주세요...";
 
-    document.getElementById("titleFade").style.background = "rgba(0, 153, 255, 1)";
+    //document.getElementById("titleFade").style.background = "rgba(0, 153, 255, 1)";
 
     loadState = steps;
     requestCall = null;
@@ -151,6 +151,7 @@ function loadProgram(steps, state) {
         case 4://프로그램을 준비합니다.
 
             document.getElementById("loadingState").innerText = "로딩 완료!";
+            document.getElementById("appTitle").style.opacity = 0;
 
             return;
     }

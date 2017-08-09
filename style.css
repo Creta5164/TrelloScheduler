@@ -1,5 +1,6 @@
 ﻿* {
 	transition:all 0.1s;
+    -webkit-transition:all 0.1s;
     font-family: 'Spoqa Han Sans', 'Malgun Gothic', sans-serif;
     padding:0;
     margin:0;
@@ -14,6 +15,15 @@ body {
 h1 {
     color: white;
     font-size: 48pt;
+}
+
+#allContent {
+
+}
+
+#appTitle {
+    transition: all 2s;
+    -webkit-transition: all 2s;
 }
 
 .loader {
