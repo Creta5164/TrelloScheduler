@@ -22,8 +22,8 @@ h1 {
 }
 
 #appTitle {
-    transition: all 2s;
-    -webkit-transition: all 2s;
+    transition: all 2s !important;
+    -webkit-transition: all 2s !important;
 }
 
 .loader {
