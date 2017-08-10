@@ -153,8 +153,7 @@ function loadProgram(steps, state) {
             document.getElementById("loadingState").innerText = "로딩 완료!";
 
             setTimeout(function () {
-                document.getElementById("appTitle").style.transform = "translate3d(0px, 100vh, 0px)";
-                document.getElementById("appTitle").style.webkitTransform = "translate3d(0px, 100vh, 0px)";
+                document.getElementById("appTitle").classList.add("alpha0");
 
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
