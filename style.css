@@ -23,8 +23,8 @@ h1 {
 }
 
 #appTitle {
-    transition: all 0.5s ease-in;
-    -webkit-transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
 
 .loader {
