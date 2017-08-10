@@ -153,8 +153,7 @@ h1 {
 }
 
 .alpha0 {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
+    filter: alpha(opacity=50);
     -moz-opacity: 0;
     -khtml-opacity: 0;
     opacity: 0;
