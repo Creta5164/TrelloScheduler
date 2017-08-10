@@ -151,7 +151,7 @@ function loadProgram(steps, state) {
         case 4://프로그램을 준비합니다.
 
             document.getElementById("loadingState").innerText = "로딩 완료!";
-            document.getElementById("appTitle").style.opacity = 0;
+            document.getElementById("appTitle").classList.add("alpha0");
 
             return;
     }

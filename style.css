@@ -152,6 +152,14 @@ h1 {
     padding-top: 40vh;
 }
 
+.alpha0 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+}
+
 /* Wallpaper Engine */
 @media screen and (device-width: 100vw) and (device-height: 100vh) {
 
