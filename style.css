@@ -27,6 +27,11 @@ h1 {
     -webkit-transition: all 3s;
 }
 
+#appTitle * {
+    transition: all 3s;
+    -webkit-transition: all 3s;
+}
+
 .loader {
     background:url('img/icon/loader_icon.gif');
     background-position:center;
