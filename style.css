@@ -22,7 +22,7 @@ h1 {
     z-index:-1;
 }
 
-#appTitle {
+#appTitle, #appTitle * {
     -webkit-transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
     transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
