@@ -23,7 +23,8 @@ h1 {
 }
 
 #appTitle {
-
+    transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
 }
 
 .loader {
