@@ -151,12 +151,17 @@ function loadProgram(steps, state) {
         case 4://프로그램을 준비합니다.
 
             document.getElementById("loadingState").innerText = "로딩 완료!";
-            document.getElementById("appTitle").style.transform = "translate3d(0px, 100vh, 0px)";
-            document.getElementById("appTitle").style.webkitTransform = "translate3d(0px, 100vh, 0px)";
 
             setTimeout(function () {
-                document.getElementById("appTitle").style.display = "none";
-            }, 500);
+                document.getElementById("appTitle").style.transform = "translate3d(0px, 100vh, 0px)";
+                document.getElementById("appTitle").style.webkitTransform = "translate3d(0px, 100vh, 0px)";
+
+                setTimeout(function () {
+                    document.getElementById("appTitle").style.display = "none";
+                }, 500);
+            }, 1000);
+            programLoaded = true;
+
 
             return;
     }
