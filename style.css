@@ -22,7 +22,7 @@ h1 {
     z-index:-1;
 }
 
-#appTitle, #appTitle * {
+#appTitle.alpha0, #appTitle *.alpha0 {
     -webkit-transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
     transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
@@ -39,6 +39,29 @@ h1 {
     width:48px;
     height:48px;
     display:inline-block;
+}
+
+.popupHomeIcon {
+    background: white;
+    border-radius: 5px;
+    display: inline-block;
+    float: right;
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+}
+
+.popupHomeIconDeny {
+    float: right;
+    margin-top: 35px;
+    cursor: pointer;
+    color: #09f;
+}
+
+.popupContainer {
+    width: 100%;
+    position: fixed;
+    z-index: 4;
 }
 
 .navi {
@@ -176,7 +199,10 @@ h1 {
 
 /* Mobile */
 @media screen and (max-width: 480px) {
-
+    .popupContainer {
+        font-size:9pt;
+    }
+    
     .pageTitle {
         padding-top: 75px;
         padding-left: 6%;
