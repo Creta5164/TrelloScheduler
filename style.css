@@ -22,7 +22,7 @@ h1 {
     z-index:-1;
 }
 
-#appTitle.alpha0, #appTitle *.alpha0 {
+#appTitle, #appTitle * {
     -webkit-transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
     transition: all 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
@@ -62,6 +62,22 @@ h1 {
     width: 100%;
     position: fixed;
     z-index: 4;
+
+    margin-top:-25px;
+    opacity:0;
+}
+
+.popupContainer * {
+    opacity:0;
+}
+
+.popupAppear {
+    margin-top: 0px;
+    opacity: 1;
+}
+
+.popupAppear * {
+    opacity: 1;
 }
 
 .navi {

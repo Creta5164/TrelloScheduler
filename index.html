@@ -29,16 +29,18 @@
 
         <script src="https://trello.com/1/client.js?key=32a1268ef9ed81c122676b3073731585"></script>
 
+        <script src="lib/js.cookie.js"></script>
+
         <script src="main.js"></script>
     </head>
 
     <body onload="init();">
 
-        <div class="popupContainer">
+        <div id="popupContainer" class="popupContainer">
             <div id="popupMessage" class="popupHomeIcon">
-                이 메뉴를 통해 홈 화면에 추가하면<br>
-                앱 처럼 사용할 수 있어요!
-                <div id="popupConfirm" class="popupHomeIconDeny"><u>괜찮아요</u></div>
+                메뉴를 통해 홈 화면에 추가하기를 사용하면,<br>
+                홈 화면에서 앱 처럼 사용할 수 있어요!
+                <div id="popupConfirm" class="popupHomeIconDeny" onclick="ConfirmPopup();"><u>괜찮아요</u></div>
             </div>
         </div>
 
