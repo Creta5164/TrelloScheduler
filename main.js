@@ -27,7 +27,7 @@ function init() {
 
     popupContainer = document.getElementById('popupContainer');
 
-    if (Cookies.get('recommandAddToHome') != 'Y') {
+    if (isMobile && Cookies.get('recommandAddToHome') != 'Y') {
 
         popupContainer.classList.add('popupAppear');
 
