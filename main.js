@@ -34,7 +34,8 @@ function init() {
 
     updateLoginElements();
 
-    if (isMobile) document.documentElement.webkitRequestFullscreen();
+    if (isMobile && screenfull.enabled)
+        screenfull.request();
 }
 
 //로그인 상태를 확인하고, 표시할 것과 표시되지 말아야 할 것을 업데이트합니다.
