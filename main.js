@@ -34,7 +34,7 @@ function init() {
 
     updateLoginElements();
 
-    if (isMobile && screenfull.enabled)
+    if (screenfull.enabled)
         screenfull.request();
 }
 
