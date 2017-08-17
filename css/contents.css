@@ -1,0 +1,57 @@
+﻿.cardList {
+	display:inline-block;
+    width:225px;
+	text-align:left;
+}
+
+.cardList .header {
+	background:white;
+    padding:6px 6px 6px 6px;
+    border-radius:3px 3px 0 0;
+}
+
+.cardList .header a {
+	margin:3px 3px 3px 3px;
+    padding:3px;
+    border-radius:3px;
+	display:block;
+    font-size:10pt;
+    cursor:pointer;
+}
+
+.cardList .header a:hover {
+	background:#eaeaea;
+}
+
+.cardList .list {
+	background:white;
+}
+
+.cardList .scroll {
+    padding:0 6px 0 6px;
+    margin-right:4px;
+    max-height:80vh;
+    overflow:auto;
+}
+
+.cardList .scroll::-webkit-scrollbar {
+	width: 12px;
+	height: 8px;
+	border-radius:3px;
+	margin-right:2px;
+	background:white;
+}
+
+.cardList .scroll::-webkit-scrollbar-thumb {
+	border-radius:3px;
+	background: #ddd;
+}
+
+.cardList .footer {
+	text-align:center;
+    
+	background:white;
+    padding:0 6px 3px 6px;
+    
+    border-radius:0 0 3px 3px;
+}
