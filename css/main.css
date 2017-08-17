@@ -33,7 +33,7 @@ h1 {
 }
 
 .loader {
-    background:url('img/icon/loader_icon.gif');
+    background:url('../img/icon/loader_icon.gif');
     background-position:center;
     background-size:cover;
     width:48px;
@@ -129,7 +129,7 @@ h1 {
 }
 
 .container.mainBG {
-    background: url('img/main_background.jpg');
+    background: url('../img/main_background.jpg');
     background-position:center;
     background-size:cover;
     background-attachment:fixed;
@@ -138,7 +138,7 @@ h1 {
 }
 
 .container.mainEndBG {
-    background: url('img/main_end_background.jpg');
+    background: url('../img/main_end_background.jpg');
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
