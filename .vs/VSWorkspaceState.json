@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\lib"
   ],
-  "SelectedNode": "\\main.js",
+  "SelectedNode": "\\lib\\js.cookie.js",
   "PreviewInSolutionExplorer": false
 }
