@@ -6,7 +6,8 @@
 
 .cardList .header {
 	background:white;
-    padding:6px 6px 6px 6px;
+    margin-bottom:-1px;
+    padding:6px 6px 7px 6px;
     border-radius:3px 3px 0 0;
 }
 
@@ -51,7 +52,8 @@
 	text-align:center;
     
 	background:white;
-    padding:0 6px 3px 6px;
+    margin-top:-1px;
+    padding:4px 6px 3px 6px;
     
     border-radius:0 0 3px 3px;
 }
