@@ -335,6 +335,8 @@ function LoadProgramLayout() {
 
         cardContainer.appendChild(card.card);
     }
+
+    loadProgram(5);
 }
 
 function CreateCardLayout() {
