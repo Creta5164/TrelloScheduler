@@ -49,6 +49,10 @@ h1 {
     transition: opacity 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22);
 }
 
+#appTitle {
+    background:inherit;
+}
+
 .alpha0, .alpha0 * {
     opacity:0;
     z-index:1;
