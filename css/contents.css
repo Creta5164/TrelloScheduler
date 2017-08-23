@@ -39,19 +39,6 @@
     overflow:auto;
 }
 
-.cardList .scroll::-webkit-scrollbar {
-	width: 12px;
-	height: 8px;
-	border-radius:3px;
-	margin-right:2px;
-	background:white;
-}
-
-.cardList .scroll::-webkit-scrollbar-thumb {
-	border-radius:3px;
-	background: #ddd;
-}
-
 .cardList .footer {
 	text-align:center;
     
