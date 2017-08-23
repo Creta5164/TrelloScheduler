@@ -12,12 +12,12 @@
 	height:12px;
 	border-radius:3px;
 	margin-right:2px;
-	background:white;
+	background:#ccc;
 }
 
 *::-webkit-scrollbar-thumb {
 	border-radius:3px;
-	background: #ddd;
+	background:white;
 }
 
 body {

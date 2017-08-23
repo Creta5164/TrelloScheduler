@@ -4,15 +4,16 @@
 
 .cardList {
     white-space:nowrap;
-    margin: 0 2.5% 0 2.5%;
-    padding-top: 65px;
+    height:calc(100vh - 100px);
+    margin:65px 2.5% 0 2.5%;
     padding-bottom:15px;
-    overflow-x: scroll;
+    overflow-x:scroll;
+    overflow-y:hidden;
 }
 
 .cardHelper {
     display:inline-block;
-    height:calc(75px + 80vh);
+    height:100%;
 }
 
 .card {
@@ -66,38 +67,14 @@
 /* Wallpaper Engine */
 @media screen and (device-width: 100vw) and (device-height: 100vh) {
 
-    .cardHelper {
-        display:inline-block;
-        height:calc(75px + 65vh);
-    }
-
-    .card .list {
-        max-height:65vh;
-    }
 }
 
 /* Tablet */
 @media screen and (min-width: 960px) {
     
-    .cardHelper {
-        display:inline-block;
-        height:calc(75px + 65vh);
-    }
-
-    .card .list {
-        max-height:65vh;
-    }
 }
 
 /* Mobile */
 @media screen and (max-width: 480px) {
 
-    .cardHelper {
-        display:inline-block;
-        height:calc(75px + 70vh);
-    }
-
-    .card .list {
-        max-height:70vh;
-    }
 }
