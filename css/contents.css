@@ -2,6 +2,12 @@
 
 }
 
+.cardList {
+    white-space:nowrap;
+    height:100vh;
+    padding-top:25px;
+}
+
 .card {
 	display:inline-block;
     width:300px;
