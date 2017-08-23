@@ -12,12 +12,12 @@
 	height: 8px;
 	border-radius:3px;
 	margin-right:2px;
-	background:rgba(255, 255, 255, 0.5);
+	background:white;
 }
 
 *::-webkit-scrollbar-thumb {
 	border-radius:3px;
-	background: rgba(221, 221, 221, 0.5);
+	background: #ddd;
 }
 
 body {
