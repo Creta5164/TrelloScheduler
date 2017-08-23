@@ -10,6 +10,11 @@
     overflow-x: scroll;
 }
 
+.cardHelper {
+    display:inline-block;
+    height:calc(75px + 82vh);
+}
+
 .card {
 	display:inline-block;
     width:300px;
@@ -44,7 +49,7 @@
 .card .list {
     padding:0 6px 0 6px;
     margin-right:4px;
-    max-height:70vh;
+    max-height:82vh;
     overflow:auto;
 }
 
@@ -56,4 +61,35 @@
     padding:4px 6px 3px 6px;
     
     border-radius:0 0 3px 3px;
+}
+
+/* Wallpaper Engine */
+@media screen and (device-width: 100vw) and (device-height: 100vh) {
+
+    .cardHelper {
+        display:inline-block;
+        height:calc(75px + 85vh);
+    }
+
+    .card .list {
+        max-height:85vh;
+    }
+}
+
+/* Tablet */
+@media screen and (min-width: 960px) {
+
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+
+    .cardHelper {
+        display:inline-block;
+        height:calc(75px + 70vh);
+    }
+
+    .card .list {
+        max-height:70vh;
+    }
 }

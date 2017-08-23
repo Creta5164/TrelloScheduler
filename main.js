@@ -329,8 +329,7 @@ function LoadProgramLayout() {
     appView.appendChild(cardContainer);
 
     cardHelper = document.createElement('div');
-    cardHelper.style.display = "inline-block";
-    cardHelper.style.height = "calc(75px + 70vh)";
+    cardHelper.classList.add("cardHelper");
     cardContainer.appendChild(cardHelper);
 
     for (var i = 0; i < days.length; i++) {
