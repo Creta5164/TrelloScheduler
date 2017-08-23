@@ -12,7 +12,7 @@
 
 .cardHelper {
     display:inline-block;
-    height:calc(75px + 82vh);
+    height:calc(75px + 80vh);
 }
 
 .card {
@@ -49,7 +49,7 @@
 .card .list {
     padding:0 6px 0 6px;
     margin-right:4px;
-    max-height:82vh;
+    max-height:80vh;
     overflow:auto;
 }
 
@@ -68,17 +68,25 @@
 
     .cardHelper {
         display:inline-block;
-        height:calc(75px + 85vh);
+        height:calc(75px + 65vh);
     }
 
     .card .list {
-        max-height:85vh;
+        max-height:65vh;
     }
 }
 
 /* Tablet */
 @media screen and (min-width: 960px) {
+    
+    .cardHelper {
+        display:inline-block;
+        height:calc(75px + 65vh);
+    }
 
+    .card .list {
+        max-height:65vh;
+    }
 }
 
 /* Mobile */
