@@ -50,7 +50,7 @@
 .card .list {
     padding:0 6px 0 6px;
     margin-right:4px;
-    max-height:80vh;
+    max-height:calc(100vh - 180px);
     overflow:auto;
 }
 
