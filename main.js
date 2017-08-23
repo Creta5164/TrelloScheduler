@@ -324,6 +324,7 @@ function LoadProgramLayout() {
     var card, cardContainer, appView = document.getElementById("appView");
     
     cardContainer = document.createElement('div');
+    cardContainer.classList.add("cardList");
     appView.appendChild(cardContainer);
 
     for (var i = 0; i < days.length; i++) {
