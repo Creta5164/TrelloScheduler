@@ -4,18 +4,21 @@
 
 .cardList {
     white-space:nowrap;
-    height:calc(100vh - 25px);
-    padding-top:25px;
+    margin: 0 2.5% 0 2.5%;
+    padding-top: 65px;
+    padding-bottom:15px;
+    overflow-x: scroll;
 }
 
 .card {
 	display:inline-block;
     width:300px;
 	text-align:left;
+    padding: 0 5px 0 5px;
 }
 
 .card .header {
-	background:white;
+	background:#ddd;
     margin-bottom:-1px;
     padding:6px 6px 7px 6px;
     border-radius:3px 3px 0 0;
@@ -35,20 +38,20 @@
 }
 
 .card .main {
-	background:white;
+	background:#ddd;
 }
 
 .card .list {
     padding:0 6px 0 6px;
     margin-right:4px;
-    max-height:80vh;
+    max-height:70vh;
     overflow:auto;
 }
 
 .card .footer {
 	text-align:center;
     
-	background:white;
+	background:#ddd;
     margin-top:-1px;
     padding:4px 6px 3px 6px;
     

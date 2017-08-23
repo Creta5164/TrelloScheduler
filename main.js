@@ -330,7 +330,7 @@ function LoadProgramLayout() {
 
     cardHelper = document.createElement('div');
     cardHelper.style.display = "inline-block";
-    cardHelper.style.height = "660px";
+    cardHelper.style.height = "calc(75px + 70vh)";
     cardContainer.appendChild(cardHelper);
 
     for (var i = 0; i < days.length; i++) {
