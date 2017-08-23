@@ -172,7 +172,14 @@ function loadProgram(steps, state) {
             
             return;
 
-        case 4://프로그램을 준비합니다.
+        case 4://프로그램을 표시하기 위해 준비작업을 합니다.
+
+            document.getElementById("loadingState").innerText = "프로그램을 준비하는 중...";
+            LoadProgramLayout();
+
+            return;
+
+        case 5://프로그램을 준비합니다.
 
             document.getElementById("loadingState").innerText = "";
 
@@ -311,6 +318,44 @@ function RunLoadAsyncResponse() {
         requestCall.call(requestCall.async);
 
     document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
+}
+
+function LoadProgramLayout() {
+    var card, cardContainer, appView = document.getElementById("appView");
+    
+    cardContainer = document.createElement('div');
+    appView.appendChild(cardContainer);
+
+    for (var i = 0; i < days.length; i++) {
+        card = CreateCardLayout();
+
+        cardContainer.appendChild(card.card);
+    }
+}
+
+function CreateCardLayout() {
+    var card, header, main, list, footer;
+
+    card = document.createElement('div');
+    card.classList.add("card");
+
+    header = document.createElement('div');
+    header.classList.add("header");
+    card.appendChild(header);
+
+    main = document.createElement('div');
+    main.classList.add("main");
+    card.appendChild(main);
+
+    list = document.createElement('div');
+    list.classList.add("list");
+    main.appendChild(list);
+
+    footer = document.createElement('div');
+    footer.classList.add("footer");
+    card.appendChild(footer);
+
+    return {"card":card, "header":header, "main":main, "list":list, "footer":footer};
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.

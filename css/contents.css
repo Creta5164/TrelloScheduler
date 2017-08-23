@@ -2,20 +2,20 @@
 
 }
 
-.cardList {
+.card {
 	display:inline-block;
     width:300px;
 	text-align:left;
 }
 
-.cardList .header {
+.card .header {
 	background:white;
     margin-bottom:-1px;
     padding:6px 6px 7px 6px;
     border-radius:3px 3px 0 0;
 }
 
-.cardList .header a {
+.card .header a {
 	margin:3px 3px 3px 3px;
     padding:3px;
     border-radius:3px;
@@ -24,22 +24,22 @@
     cursor:pointer;
 }
 
-.cardList .header a:hover {
+.card .header a:hover {
 	background:#eaeaea;
 }
 
-.cardList .list {
+.card .main {
 	background:white;
 }
 
-.cardList .scroll {
+.card .list {
     padding:0 6px 0 6px;
     margin-right:4px;
     max-height:80vh;
     overflow:auto;
 }
 
-.cardList .footer {
+.card .footer {
 	text-align:center;
     
 	background:white;
