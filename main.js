@@ -65,7 +65,7 @@ function updateLoginElements() {
     for (i = 0; i < list.length; i++)
         list[i].style.display = !loginState ? "" : "none";
 
-    //document.body.style.overflow = loginState ? "hidden" : "auto";
+    document.body.style.overflow = loginState ? "hidden" : "auto";
     if (loginState) {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -186,9 +186,8 @@ function loadProgram(steps, state) {
 
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
-
+                document.body.style.overflow = "auto";
                 setTimeout(function () {
-                    window.location.href = "#achivementToday";
                     document.getElementById("appTitle").style.display = "none";
                 }, 500);
             }, 1000);
@@ -340,11 +339,6 @@ function LoadProgramLayout() {
 
         cardContainer.appendChild(card.card);
     }
-
-    var achivementToday = document.createElement('a');
-    achivementToday.name = "acivementToday";
-
-    appView.appendChild(achivementToday);
 
     loadProgram(5);
 }
