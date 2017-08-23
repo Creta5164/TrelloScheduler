@@ -53,6 +53,8 @@ function init() {
         loginTrello();
 
     updateLoginElements();
+
+    InitSmoothScroll();
 }
 
 //로그인 상태를 확인하고, 표시할 것과 표시되지 말아야 할 것을 업데이트합니다.
@@ -187,7 +189,11 @@ function loadProgram(steps, state) {
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
                 document.body.style.overflow = "auto";
-                window.scrollTo(0, document.body.scrollHeight);
+                window.scroll({
+                    top: document.body.scrollHeight,
+                    left: 0,
+                    behavior: 'smooth'
+                });
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
                 }, 500);
@@ -398,4 +404,52 @@ function ShowCommandLineAlert() {
             "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"
         );
     }
+}
+
+//from : https://css-tricks.com/snippets/jquery/smooth-scrolling/
+//모든 해시태그에 스크롤 이벤트를 추가합니다.
+function InitSmoothScroll()
+{
+    // Select all links with hashes
+    $('a[href*="#"]')
+        // Remove links that don't actually link to anything
+        .not('[href="#"]')
+        .not('[href="#0"]')
+        .click(function (event) {
+            // On-page links
+            if (
+                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                location.hostname == this.hostname) {
+                // Figure out element to scroll to
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                // Does a scroll target exist?
+                if (target.length) {
+                    // Only prevent default if animation is actually gonna happen
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000, function () {
+                        // Callback after animation
+                        // Must change focus!
+                        var $target = $(target);
+                        $target.focus();
+                        if ($target.is(":focus")) { // Checking if the target was focused
+                            return false;
+                        } else {
+                            $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                            $target.focus(); // Set focus again
+                        };
+                    });
+                }
+            }
+        });
+}
+
+//대상으로 스크롤합니다.
+function SmoothScrollTo(name) {
+    // Only prevent default if animation is actually gonna happen
+    $('html, body').animate({
+        scrollTop: $("#"+name).offset().top
+    }, 1000);
 }
