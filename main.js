@@ -322,11 +322,16 @@ function RunLoadAsyncResponse() {
 }
 
 function LoadProgramLayout() {
-    var card, cardContainer, appView = document.getElementById("appView");
+    var card, cardContainer, cardHelper, appView = document.getElementById("appView");
     
     cardContainer = document.createElement('div');
     cardContainer.classList.add("cardList");
     appView.appendChild(cardContainer);
+
+    cardHelper = document.createElement('div');
+    cardHelper.style.display = "inline-block";
+    cardHelper.style.height = "660px";
+    cardContainer.appendChild(cardHelper);
 
     for (var i = 0; i < days.length; i++) {
         card = CreateCardLayout();
