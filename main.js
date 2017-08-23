@@ -429,7 +429,7 @@ function InitSmoothScroll()
                     event.preventDefault();
                     $('html, body').animate({
                         scrollTop: target.offset().top
-                    }, 1000, function () {
+                    }, 1000, "easeInOutQuart", function () {
                         // Callback after animation
                         // Must change focus!
                         var $target = $(target);
@@ -451,5 +451,5 @@ function SmoothScrollTo(name) {
     // Only prevent default if animation is actually gonna happen
     $('html, body').animate({
         scrollTop: $("#"+name).offset().top
-    }, 1000);
+    }, 1000, "easeInOutQuart");
 }
