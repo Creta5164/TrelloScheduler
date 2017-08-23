@@ -189,11 +189,7 @@ function loadProgram(steps, state) {
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
                 document.body.style.overflow = "auto";
-                window.scroll({
-                    top: document.body.scrollHeight,
-                    left: 0,
-                    behavior: 'smooth'
-                });
+                SmoothScrollTo("achivementToday");
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
                 }, 500);
@@ -346,6 +342,10 @@ function LoadProgramLayout() {
 
         cardContainer.appendChild(card.card);
     }
+
+    var achivementToday = document.createElement('div');
+    achivementToday.id = "achivementToday";
+    appView.appendChild(achivementToday);
 
     loadProgram(5);
 }
