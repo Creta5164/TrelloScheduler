@@ -7,6 +7,7 @@ let isMobile = false;
 
 const schedulerBoardName = "TrelloScheduler";    //Trello
 const days  = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const kdays = ["일", "월", "화", "수", "목", "금", "토"];
 const rdays = days.reverse();
 let loginState;                                  //로그인 상태 (bool)
 let programLoaded;                               //프로그램이 로드 된 상태 (bool)
@@ -329,6 +330,8 @@ function LoadProgramLayout() {
 
     for (var i = 0; i < days.length; i++) {
         card = CreateCardLayout();
+        card.header.innerHTML = "<a>+ 목표 추가</a>";
+        card.footer.innerHTML = kdays[i] + "요일";
 
         cardContainer.appendChild(card.card);
     }
