@@ -32,7 +32,7 @@ h1 {
 
 #appContent {
     position:absolute;
-    z-index:-1;
+    z-index:-2;
     width:100%;
     height:calc(200vh - 25px);
 }
