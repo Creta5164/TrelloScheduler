@@ -60,6 +60,8 @@ function init() {
     updateLoginElements();
 
     InitSmoothScroll();
+
+    $(window).resize(OnResizeEvent);
 }
 
 //로그인 상태를 확인하고, 표시할 것과 표시되지 말아야 할 것을 업데이트합니다.
@@ -415,6 +417,11 @@ function LoadFailed() {
     alert("통신하는 도중, 오류가 발생했습니다.");
     logoutTrello();
     window.location.reload();
+}
+
+function OnResizeEvent() {
+    if (programLoaded)
+        ManageScheduler ? ViewManageScheduler() : ViewToday();
 }
 
 function ShowCommandLineAlert() {
