@@ -405,6 +405,7 @@ function ViewToday() {
 //뷰를 일정표 목록으로 전환합니다.
 function ViewManageScheduler() {
     ManageScheduler = true;
+    $('html, body').stop(true);
     SmoothScrollTo("appContent", "easeOutQuart");
 
     document.getElementById("appContent").style.height = "calc(190vh - 25px)";
@@ -414,6 +415,7 @@ function ViewManageScheduler() {
 //Trello에 요청이 실패됐을 때 호출됩니다.
 function LoadFailed() {
     programLoaded = false;
+    $('html, body').stop(true);
     alert("통신하는 도중, 오류가 발생했습니다.");
     logoutTrello();
     window.location.reload();
