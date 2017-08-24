@@ -21,6 +21,8 @@ let loadState;
 let ConfirmPopup;                                
 let popupContainer;
 
+let ManageScheduler;
+
 //주 진입부입니다.
 function init() {
     isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -189,6 +191,7 @@ function loadProgram(steps, state) {
 
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
+                InitProgram();
                 SmoothScrollTo("achivementToday");
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
@@ -324,6 +327,7 @@ function RunLoadAsyncResponse() {
     document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 }
 
+//프로그램의 레이아웃을 준비합니다.
 function LoadProgramLayout() {
     var card, cardContainer, cardHelper, appView = document.getElementById("appView");
     
@@ -350,6 +354,7 @@ function LoadProgramLayout() {
     loadProgram(5);
 }
 
+//스케줄러를 위한 메뉴를 구성합니다.
 function CreateCardLayout() {
     var card, header, main, list, footer;
 
@@ -373,6 +378,23 @@ function CreateCardLayout() {
     card.appendChild(footer);
 
     return {"card":card, "header":header, "main":main, "list":list, "footer":footer};
+}
+
+//프로그램의 주 진입부입니다.
+function InitProgram() {
+    ManageScheduler = false;
+
+    ViewToday();
+}
+
+//뷰를 현재 목표로 전환합니다.
+function ViewToday() {
+
+}
+
+//뷰를 일정표 목록으로 전환합니다.
+function ViewToday() {
+
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
@@ -408,8 +430,9 @@ function ShowCommandLineAlert() {
 
 //from : https://css-tricks.com/snippets/jquery/smooth-scrolling/
 //모든 해시태그에 스크롤 이벤트를 추가합니다.
-function InitSmoothScroll()
+function InitSmoothScroll(ease)
 {
+    if (ease == null) ease = "easeInOutQuart";
     // Select all links with hashes
     $('a[href*="#"]')
         // Remove links that don't actually link to anything
@@ -429,7 +452,7 @@ function InitSmoothScroll()
                     event.preventDefault();
                     $('html, body').animate({
                         scrollTop: target.offset().top
-                    }, 1000, "easeInOutQuart", function () {
+                    }, 1000, ease, function () {
                         // Callback after animation
                         // Must change focus!
                         var $target = $(target);
@@ -447,9 +470,10 @@ function InitSmoothScroll()
 }
 
 //대상으로 스크롤합니다.
-function SmoothScrollTo(name) {
+function SmoothScrollTo(name, ease) {
+    if (ease == null) ease = "easeInOutQuart";
     // Only prevent default if animation is actually gonna happen
     $('html, body').animate({
         scrollTop: $("#"+name).offset().top
-    }, 1000, "easeInOutQuart");
+    }, 1000, ease);
 }

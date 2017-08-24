@@ -34,7 +34,7 @@ h1 {
     position:absolute;
     z-index:-2;
     width:100%;
-    height:calc(200vh - 25px);
+    height:calc(180vh - 25px);
 }
 
 #appView {
