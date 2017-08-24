@@ -194,7 +194,6 @@ function loadProgram(steps, state) {
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
                 InitProgram();
-                SmoothScrollTo("achivementToday");
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
                 }, 500);
@@ -391,11 +390,15 @@ function InitProgram() {
 
 //뷰를 현재 목표로 전환합니다.
 function ViewToday() {
+    ManageScheduler = false;
+    SmoothScrollTo("achivementToday", "easeOutQuartic");
 
 }
 
 //뷰를 일정표 목록으로 전환합니다.
-function ViewToday() {
+function ViewManageScheduler() {
+    ManageScheduler = true;
+    SmoothScrollTo("appContent", "easeOutQuartic");
 
 }
 
