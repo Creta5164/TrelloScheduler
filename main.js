@@ -68,6 +68,7 @@ function updateLoginElements() {
         list[i].style.display = !loginState ? "" : "none";
 
     document.body.style.overflow = loginState ? "hidden" : "auto";
+
     if (loginState) {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -188,7 +189,6 @@ function loadProgram(steps, state) {
 
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
-                document.body.style.overflow = "auto";
                 SmoothScrollTo("achivementToday");
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
