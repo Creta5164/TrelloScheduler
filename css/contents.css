@@ -7,7 +7,7 @@
     height:calc(100vh - 100px);
     margin:65px 2.5% 0 2.5%;
     padding-bottom:15px;
-    overflow-x:scroll;
+    overflow-x:hidden;
     overflow-y:hidden;
 }
 

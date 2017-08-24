@@ -21,6 +21,7 @@ let loadState;
 let ConfirmPopup;                                
 let popupContainer;
 
+let cardContainer;
 let ManageScheduler;
 
 //주 진입부입니다.
@@ -331,22 +332,23 @@ function RunLoadAsyncResponse() {
 
 //프로그램의 레이아웃을 준비합니다.
 function LoadProgramLayout() {
-    var card, cardContainer, cardHelper, appView = document.getElementById("appView");
+    var card, _cardContainer, cardHelper, appView = document.getElementById("appView");
     
-    cardContainer = document.createElement('div');
-    cardContainer.classList.add("cardList");
-    appView.appendChild(cardContainer);
+    _cardContainer = document.createElement('div');
+    _cardContainer.classList.add("cardList");
+    _cardContainer.id = "cardContainer";
+    appView.appendChild((cardContainer = _cardContainer));
 
     cardHelper = document.createElement('div');
     cardHelper.classList.add("cardHelper");
-    cardContainer.appendChild(cardHelper);
+    _cardContainer.appendChild(cardHelper);
 
     for (var i = 0; i < days.length; i++) {
         card = CreateCardLayout();
         card.header.innerHTML = "<a>+ 목표 추가</a>";
         card.footer.innerHTML = kdays[i] + "요일";
 
-        cardContainer.appendChild(card.card);
+        _cardContainer.appendChild(card.card);
     }
 
     var achivementToday = document.createElement('div');
@@ -392,15 +394,19 @@ function InitProgram() {
 //뷰를 현재 목표로 전환합니다.
 function ViewToday() {
     ManageScheduler = false;
-    SmoothScrollTo("achivementToday", "easeOutQuartic");
+    SmoothScrollTo("achivementToday", "easeOutQuart");
 
+    document.getElementById("appContent").style.height = "";
+    cardContainer.style.overflowX = "";
 }
 
 //뷰를 일정표 목록으로 전환합니다.
 function ViewManageScheduler() {
     ManageScheduler = true;
-    SmoothScrollTo("appContent", "easeOutQuartic");
+    SmoothScrollTo("appContent", "easeOutQuart");
 
+    document.getElementById("appContent").style.height = "calc(190vh - 25px)";
+    cardContainer.style.overflowX = "scroll";
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.

@@ -34,7 +34,7 @@ h1 {
     position: absolute;
     z-index: -2;
     width: 100%;
-    height: calc(180vh - 25px);
+    height: calc(195vh - 15px);
     /*today  : calc(195vh - 15px);, cardList scroll hidden*/
     /*manage : calc(190vh - 25px);, cardList scroll auto  */
 }
