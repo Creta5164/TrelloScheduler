@@ -193,6 +193,7 @@ function loadProgram(steps, state) {
 
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
+                SmoothScrollTo("achivementToday");
                 InitProgram();
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
