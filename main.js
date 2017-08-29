@@ -407,8 +407,8 @@ function ViewManageScheduler() {
     ManageScheduler = true;
     //SmoothScrollTo("appContent", "easeOutQuart");
     document.getElementById("appContent").style.marginTop = "";
-    
-    cardContainer.style.overflowX = "scroll";
+
+    setTimeout(eval, 500, "cardContainer.style.overflowX = \"scroll\"");
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
