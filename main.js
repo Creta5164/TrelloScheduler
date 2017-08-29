@@ -21,6 +21,7 @@ let loadState;
 let ConfirmPopup;                                
 let popupContainer;
 
+let appContent;
 let cardContainer;
 let ManageScheduler;
 
@@ -60,6 +61,8 @@ function init() {
     updateLoginElements();
 
     InitSmoothScroll();
+
+    appContent = document.getElementById("appContent");
 
     $(window).resize(OnResizeEvent);
 }
@@ -397,9 +400,14 @@ function InitProgram() {
 function ViewToday() {
     ManageScheduler = false;
     //SmoothScrollTo("achivementToday", "easeOutQuart");
-    document.getElementById("appContent").style.marginTop = "calc(-100vh + 64px)";
+    appContent.style.marginTop = "calc(-100vh + 64px)";
+    appContent.style.setProperty("-webkit-transition", "margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1)");
+    appContent.style.setProperty("transition", "margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1)");
 
-    setTimeout(eval, 375, "cardContainer.style.overflowX = \"\"");
+
+    cardContainer.style.overflowX = "";
+    setTimeout(eval, 750, "appContent.style.setProperty(\"-webkit-transition\", \"\"); appContent.style.setProperty(\"transition\", \"\"");
+    //setTimeout(eval, 375, "cardContainer.style.overflowX = \"\"");
 }
 
 //뷰를 일정표 목록으로 전환합니다.
