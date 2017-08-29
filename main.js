@@ -399,7 +399,7 @@ function ViewToday() {
     //SmoothScrollTo("achivementToday", "easeOutQuart");
     document.getElementById("appContent").style.marginTop = "calc(-100vh + 64px)";
 
-    setTimeout(eval, 500, "cardContainer.style.overflowX = \"\"");
+    setTimeout(eval, 375, "cardContainer.style.overflowX = \"\"");
 }
 
 //뷰를 일정표 목록으로 전환합니다.
@@ -408,7 +408,7 @@ function ViewManageScheduler() {
     //SmoothScrollTo("appContent", "easeOutQuart");
     document.getElementById("appContent").style.marginTop = "";
 
-    setTimeout(eval, 500, "cardContainer.style.overflowX = \"scroll\"");
+    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"");
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
