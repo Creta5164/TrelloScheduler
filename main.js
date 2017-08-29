@@ -401,23 +401,23 @@ function ViewToday() {
     ManageScheduler = false;
     //SmoothScrollTo("achivementToday", "easeOutQuart");
     appContent.style.marginTop = "calc(-100vh + 64px)";
-    appContent.style.setProperty("-webkit-transition", "margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1)");
-    appContent.style.setProperty("transition", "margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1)");
+    appContent.classList.add("animate");
 
 
     cardContainer.style.overflowX = "";
-    setTimeout(eval, 750, "appContent.style.setProperty(\"-webkit-transition\", \"\"); appContent.style.setProperty(\"transition\", \"\"");
     //setTimeout(eval, 375, "cardContainer.style.overflowX = \"\"");
+    setTimeout(eval, 750, "appContent.classList.remove(\"animate\")");
 }
 
 //뷰를 일정표 목록으로 전환합니다.
 function ViewManageScheduler() {
     ManageScheduler = true;
     //SmoothScrollTo("appContent", "easeOutQuart");
-    document.getElementById("appContent").style.marginTop = "";
+    appContent.style.marginTop = "";
+    appContent.classList.add("animate");
 
     setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"");
-    setTimeout(eval, 750, "appContent.style.setProperty(\"-webkit-transition\", \"\"); appContent.style.setProperty(\"transition\", \"\"");
+    setTimeout(eval, 750, "appContent.classList.remove(\"animate\")");
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
