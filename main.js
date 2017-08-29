@@ -398,8 +398,8 @@ function ViewToday() {
     ManageScheduler = false;
     //SmoothScrollTo("achivementToday", "easeOutQuart");
     document.getElementById("appContent").style.marginTop = "calc(-100vh + 64px)";
-    
-    cardContainer.style.overflowX = "";
+
+    setTimeout(eval, 500, "cardContainer.style.overflowX = \"\"");
 }
 
 //뷰를 일정표 목록으로 전환합니다.
