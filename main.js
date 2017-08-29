@@ -196,7 +196,7 @@ function loadProgram(steps, state) {
 
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
-                SmoothScrollTo("achivementToday");
+                ViewToday();
                 InitProgram();
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
@@ -396,7 +396,8 @@ function InitProgram() {
 //뷰를 현재 목표로 전환합니다.
 function ViewToday() {
     ManageScheduler = false;
-    SmoothScrollTo("achivementToday", "easeOutQuart");
+    //SmoothScrollTo("achivementToday", "easeOutQuart");
+    document.getElementById("appContent").style.marginTop = "calc(-100vh + 64px)";
     
     cardContainer.style.overflowX = "";
 }
@@ -404,7 +405,8 @@ function ViewToday() {
 //뷰를 일정표 목록으로 전환합니다.
 function ViewManageScheduler() {
     ManageScheduler = true;
-    SmoothScrollTo("appContent", "easeOutQuart");
+    //SmoothScrollTo("appContent", "easeOutQuart");
+    document.getElementById("appContent").style.marginTop = "";
     
     cardContainer.style.overflowX = "scroll";
 }
