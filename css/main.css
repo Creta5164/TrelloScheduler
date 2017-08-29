@@ -35,8 +35,8 @@ h1 {
     z-index: -2;
     width: 100%;
     height: calc(200vh - 62px);
-    transition: all 0;
-    -webkit-transition: all 0;
+    transition: none;
+    -webkit-transition: none;
 }
 
 #appContent.animate {
