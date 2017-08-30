@@ -410,7 +410,10 @@ function ViewToday() {
 
 
     cardContainer.style.overflowX = "";
+    setTimeout(eval, 375, "cardContainer.style.height=\"\"");
     setTimeout(eval, 750, "appContent.classList.remove(\"animate\"); navigationBar.classList.remove(\"animate\")");
+
+    cardContainer.onclick = ViewToday;
 }
 
 //뷰를 일정표 목록으로 전환합니다.
@@ -423,8 +426,10 @@ function ViewManageScheduler() {
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
-    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"");
+    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height=\"\calc(100vh - 125px)\"");
     setTimeout(eval, 750, "appContent.classList.remove(\"animate\"); navigationBar.classList.remove(\"animate\")");
+
+    cardContainer.onclick = null;
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
