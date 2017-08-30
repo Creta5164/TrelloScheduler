@@ -423,7 +423,7 @@ function InitProgram() {
 function ViewToday() {
     ManageScheduler = false;
     navigationBar.style.marginTop = "-100vh";
-    appContent.style.marginTop = "calc(-100vh + 64px)";
+    appContent.style.transform = "translate3d(0, calc(-100vh + 64px), 0)";
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
@@ -436,7 +436,7 @@ function ViewToday() {
 function ViewManageScheduler() {
     ManageScheduler = true;
     navigationBar.style.marginTop = "0";
-    appContent.style.marginTop = "";
+    appContent.style.transform = "translate3d(0, 0, 0)";
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
