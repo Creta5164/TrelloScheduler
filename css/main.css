@@ -39,7 +39,7 @@ h1 {
     -webkit-transition: none;
 }
 
-#appContent.animate {
+.animateView {
     -webkit-transition: margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1) !important;
     transition: margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1) !important;
 }
@@ -114,7 +114,7 @@ h1 {
     opacity: 1;
 }
 
-.navi {
+#navi {
     top: 0;
     width: 100%;
     list-style-type: none;
@@ -122,11 +122,11 @@ h1 {
     z-index: 2;
 }
 
-.navi li {
+#navi li {
     float: left;
 }
 
-.navi li a {
+#navi li a {
     display: block;
     color: white;
     text-align: center;
@@ -134,9 +134,9 @@ h1 {
     text-decoration: none;
 }
 
-.navi li a:hover {
+#navi li a:hover {
     background-color: #fff;
-	color:#09f;
+    color: #09f;
 }
 
 .container {

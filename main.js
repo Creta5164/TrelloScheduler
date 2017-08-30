@@ -21,6 +21,7 @@ let loadState;
 let ConfirmPopup;                                
 let popupContainer;
 
+let navigationBar;
 let appContent;
 let cardContainer;
 let ManageScheduler;
@@ -62,6 +63,7 @@ function init() {
 
     InitSmoothScroll();
 
+    navigationBar = document.getElementById("navi");
     appContent = document.getElementById("appContent");
 
     //$(window).resize(OnResizeEvent);
@@ -399,25 +401,26 @@ function InitProgram() {
 //뷰를 현재 목표로 전환합니다.
 function ViewToday() {
     ManageScheduler = false;
-    //SmoothScrollTo("achivementToday", "easeOutQuart");
+    navigationBar.style.marginTop = "-100vh";
     appContent.style.marginTop = "calc(-100vh + 64px)";
-    appContent.classList.add("animate");
+    navigationBar.classList.add("animateView");
+    appContent.classList.add("animateView");
 
 
     cardContainer.style.overflowX = "";
-    //setTimeout(eval, 375, "cardContainer.style.overflowX = \"\"");
-    setTimeout(eval, 750, "appContent.classList.remove(\"animate\")");
+    setTimeout(eval, 750, "appContent.classList.remove(\"animate\"); navigationBar.classList.remove(\"animate\")");
 }
 
 //뷰를 일정표 목록으로 전환합니다.
 function ViewManageScheduler() {
     ManageScheduler = true;
-    //SmoothScrollTo("appContent", "easeOutQuart");
+    navigationBar.style.marginTop = "0";
     appContent.style.marginTop = "";
-    appContent.classList.add("animate");
+    navigationBar.classList.add("animateView");
+    appContent.classList.add("animateView");
 
     setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"");
-    setTimeout(eval, 750, "appContent.classList.remove(\"animate\")");
+    setTimeout(eval, 750, "appContent.classList.remove(\"animate\"); navigationBar.classList.remove(\"animate\")");
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
