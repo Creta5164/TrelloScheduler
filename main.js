@@ -422,8 +422,10 @@ function InitProgram() {
 //뷰를 현재 목표로 전환합니다.
 function ViewToday() {
     ManageScheduler = false;
-    navigationBar.style.marginTop = "-100vh";
-    appContent.style.transform = "translate3d(0, calc(-100vh + 64px), 0)";
+    navigationBar.style.webkitTransform = navigationBar.style.transform
+        = "translate3d(0, calc(-100vh + 64px), 0)";
+    appContent.style.webkitTransform = appContent.style.transform
+        = "translate3d(0, calc(-100vh + 64px), 0)";
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
@@ -435,8 +437,10 @@ function ViewToday() {
 //뷰를 일정표 목록으로 전환합니다.
 function ViewManageScheduler() {
     ManageScheduler = true;
-    navigationBar.style.marginTop = "0";
-    appContent.style.transform = "translate3d(0, 0, 0)";
+    navigationBar.style.webkitTransform = navigationBar.style.transform
+        = "translate3d(0, 0, 0)";
+    appContent.style.webkitTransform = appContent.style.transform
+        = "translate3d(0, 0, 0)";
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
