@@ -201,7 +201,6 @@ function loadProgram(steps, state) {
 
             setTimeout(function () {
                 document.getElementById("appTitle").classList.add("alpha0");
-                ViewToday();
                 InitProgram();
                 setTimeout(function () {
                     document.getElementById("appTitle").style.display = "none";
@@ -249,9 +248,9 @@ function CheckSchedulerBoardExists(list) {
 //보드의 리스트에 문제가 없는 지 확인합니다.
 function CheckSchedulerBoardStatus(list) {
     if (programLoaded) return;
-    schedulerBoardList = list;
+    schedulerBoardList = {"list":[]};
 
-    if (schedulerBoardList.length == 0) {
+    if (list.length == 0) {
         loadProgram(2);
         return;
     }
@@ -260,15 +259,18 @@ function CheckSchedulerBoardStatus(list) {
     for (var j, i = 0; i < days.length; i++) {
         curruption = true;
 
-        for (j = 0; j < schedulerBoardList.length; j++) {
-            if (schedulerBoardList[j].name != days[i]) continue;
+        for (j = 0; j < list.length; j++) {
+            if (list[j].name != days[i]) continue;
             else {
+                schedulerBoardList.list.push(list[j].idList);
+                schedulerBoardList[list[j].idList] = list[j];
                 curruption = false;
                 break;
             }
         }
 
         if (curruption) {
+            schedulerBoardList = list;
             loadProgram(2);
             return;
         }
@@ -355,6 +357,7 @@ function LoadProgramLayout() {
         card.header.innerHTML = "<a>+ 목표 추가</a>";
         card.footer.innerHTML = kdays[i] + "요일";
 
+        schedulerBoardList[schedulerBoardList.list[i]].layoutData = card;
         _cardContainer.appendChild(card.card);
     }
 
@@ -394,8 +397,33 @@ function CreateCardLayout() {
 //프로그램의 주 진입부입니다.
 function InitProgram() {
     ManageScheduler = false;
-    
+
+    ReloadCardList();
     ViewToday();
+}
+
+function ReloadCardList(list) {
+    var i, len;
+    if (list == null) {
+        for (i = 0, len = schedulerBoardList.list.length; i < len; i++) {
+            schedulerBoardList[schedulerBoardList.list[i]].layoutData.list.innerHTML = "";
+            Trello.get("/lists/" + schedulerBoardList[schedulerBoardList.list[i]].id + "/cards", UpdateCardList, LoadFailed);
+        }
+    } else {
+        var cardList, cardObjective;
+        if (list.length == 0) return;
+        cardList = schedulerBoardList[list[0].idList].layoutData.list;
+        cardList.innerHTML = "";
+        for (i = 0, len = list.length; i < len; i++) {
+
+            cardObjective = document.createElement('div');
+            cardObjective.classList.add("item");
+            cardObjective.innerHTML = "<h1>title</h1><p>desc</p>"
+                .replace("title", list[i].name)
+                .replace("desc", list[i].desc);
+            cardList.appendChild(cardObjective);
+        }
+    }
 }
 
 //뷰를 현재 목표로 전환합니다.
