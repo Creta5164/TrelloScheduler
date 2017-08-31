@@ -407,7 +407,7 @@ function ReloadCardList(list) {
     if (list == null) {
         for (i = 0, len = schedulerBoardList.list.length; i < len; i++) {
             schedulerBoardList[schedulerBoardList.list[i]].layoutData.list.innerHTML = "";
-            Trello.get("/lists/" + schedulerBoardList[schedulerBoardList.list[i]].id + "/cards", UpdateCardList, LoadFailed);
+            Trello.get("/lists/" + schedulerBoardList[schedulerBoardList.list[i]].id + "/cards", ReloadCardList, LoadFailed);
         }
     } else {
         var cardList, cardObjective;
