@@ -262,8 +262,7 @@ function CheckSchedulerBoardStatus(list) {
         for (j = 0; j < list.length; j++) {
             if (list[j].name != days[i]) continue;
             else {
-                schedulerBoardList.list.push(list[j].idList);
-                console.log(list[j]);
+                schedulerBoardList.list.push(list[j].id);
                 schedulerBoardList[list[j].idList] = list[j];
                 curruption = false;
                 break;
