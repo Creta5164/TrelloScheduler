@@ -440,7 +440,7 @@ function ViewToday() {
 
     cardContainer.style.overflowX = "";
     setTimeout(eval, 375, "cardContainer.style.height=\"\"");
-    setTimeout(eval, 750, "appContent.classList.remove(\"animate\"); navigationBar.classList.remove(\"animate\")");
+    setTimeout(eval, 750, "appContent.classList = []; navigationBar.classList = []");
 
     cardContainer.onclick = ViewToday;
 }
@@ -456,7 +456,7 @@ function ViewManageScheduler() {
     appContent.classList.add("animateView");
 
     setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height=\"\calc(100vh - 125px)\"");
-    setTimeout(eval, 750, "appContent.classList.remove(\"animate\"); navigationBar.classList.remove(\"animate\")");
+    setTimeout(eval, 750, "appContent.classList = []; navigationBar.classList = []");
 
     cardContainer.onclick = null;
 }
