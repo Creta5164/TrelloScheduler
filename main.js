@@ -443,9 +443,8 @@ function ViewToday() {
     cardContainer.style.overflowX = "";
     setTimeout(eval, 375, "cardContainer.style.height = \"\"");
     setTimeout(ViewEndAnimation, 750);
-    
-    cardContainer.onclick = ViewManageScheduler;
-    document.getElementById("swapViewButton").onclick = null;
+
+    document.getElementById("swapViewButton").onclick = ViewManageScheduler;
 }
 
 //뷰를 일정표 목록으로 전환합니다.
@@ -462,8 +461,7 @@ function ViewManageScheduler() {
 
     setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 150px)\"");
     setTimeout(ViewEndAnimation, 750);
-
-    cardContainer.onclick = null;
+    
     document.getElementById("swapViewButton").onclick = ViewToday;
 }
 
@@ -472,7 +470,9 @@ function ViewEndAnimation() {
     appContent.classList = []; navigationBar.classList = [];
     var swapBtn = document.getElementById("swapViewButton");
 
-    swapBtn.style.display = ManageScheduler ? "block" : "none";
+    swapBtn.style.display = "block";
+    swapBtn.style.color = ManageScheduler ? "white" : "none";
+    swapBtn.style.background = ManageScheduler ? "" : "none";
     swapBtn.style.bottom = ManageScheduler ? "0px" : "";
 }
 
