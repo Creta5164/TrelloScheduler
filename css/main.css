@@ -55,6 +55,8 @@ h1 {
     height:10vh;
 
     cursor:pointer;
+
+    display:none;
 }
 
 #appTitle, #appTitle * {

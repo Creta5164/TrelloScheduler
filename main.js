@@ -439,7 +439,7 @@ function ViewToday() {
 
 
     cardContainer.style.overflowX = "";
-    setTimeout(eval, 750, "appContent.classList = []; navigationBar.classList = []");
+    setTimeout(ViewEndAnimation, 750);
 
     cardContainer.onclick = ViewToday;
 }
@@ -455,9 +455,18 @@ function ViewManageScheduler() {
     appContent.classList.add("animateView");
 
     setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\";");
-    setTimeout(eval, 750, "appContent.classList = []; navigationBar.classList = []");
+    setTimeout(ViewEndAnimation, 750);
 
     cardContainer.onclick = null;
+}
+
+//뷰 애니메이션이 종료되었을 때, 애니메이션을 위한 transition을 제거하고, 스왑 버튼을 활성화합니다.
+function ViewEndAnimation() {
+    appContent.classList = []; navigationBar.classList = [];
+    var swapBtn = document.getElementById("swapViewButton");
+
+    swapBtn.style.display = "fixed";
+    swapBtn.style.bottom = ManageScheduler ? "0px" : "";
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
