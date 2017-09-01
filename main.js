@@ -437,6 +437,8 @@ function ViewToday() {
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
+    document.getElementById("swapViewButton").style.display = "none";
+
 
     cardContainer.style.overflowX = "";
     setTimeout(ViewEndAnimation, 750);
@@ -454,6 +456,8 @@ function ViewManageScheduler() {
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
+    document.getElementById("swapViewButton").style.display = "none";
+
     setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\";");
     setTimeout(ViewEndAnimation, 750);
 
@@ -465,7 +469,7 @@ function ViewEndAnimation() {
     appContent.classList = []; navigationBar.classList = [];
     var swapBtn = document.getElementById("swapViewButton");
 
-    swapBtn.style.display = "fixed";
+    swapBtn.style.display = "block";
     swapBtn.style.bottom = ManageScheduler ? "0px" : "";
 }
 
