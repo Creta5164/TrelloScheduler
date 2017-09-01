@@ -437,6 +437,9 @@ function ViewToday() {
     navigationBar.style.marginTop = appContent.style.marginTop
         = "calc(-100vh + 64px)";
 
+    navigationBar.classList.add("animateView");
+    appContent.classList.add("animateView");
+
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
     
