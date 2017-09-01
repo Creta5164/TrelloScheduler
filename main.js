@@ -471,9 +471,15 @@ function ViewEndAnimation() {
     var swapBtn = document.getElementById("swapViewButton");
 
     swapBtn.style.display = "block";
-    swapBtn.style.color = ManageScheduler ? "white" : "none";
-    swapBtn.style.background = ManageScheduler ? "" : "none";
-    swapBtn.style.bottom = ManageScheduler ? "0px" : "";
+    if (ManageScheduler) {
+        swapBtn.style.color = "white";
+        swapBtn.style.background = "";
+        swapBtn.style.bottom = "0px";
+    } else {
+        swapBtn.style.color = "none";
+        swapBtn.style.background = "none";
+        swapBtn.style.bottom = "";
+    }
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
