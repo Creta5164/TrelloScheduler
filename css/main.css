@@ -50,7 +50,7 @@ h1 {
 }
 
 #swapViewButton {
-    -webkit-transition: height 0.75s;
+    -webkit-transition: height 0.5s;
     transition: height 0.75s;
     position: absolute;
     width: 100%;
