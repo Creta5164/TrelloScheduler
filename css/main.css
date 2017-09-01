@@ -50,12 +50,22 @@ h1 {
 }
 
 #swapViewButton {
-    position:absolute;
-    width:100%;
-    height:50px;
-    background:linear-gradient(to bottom, #70b500 0%, #64a200 100%);
-    cursor:pointer;
-    display:none;
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, #70b500 0%, #64a200 100%);
+    cursor: pointer;
+    text-align: center;
+    font-size: 14pt;
+    display: none;
+}
+
+.verticalHelper {
+    height: inherit;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 #appTitle, #appTitle * {
