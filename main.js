@@ -436,15 +436,12 @@ function ViewToday() {
         = "translate3d(0, calc(-100vh + 64px), 0)";
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
-
-    document.getElementById("swapViewButton").style.display = "none";
-
-
+    
     cardContainer.style.overflowX = "";
     setTimeout(eval, 375, "cardContainer.style.height = \"\"");
     setTimeout(ViewEndAnimation, 750);
 
-    document.getElementById("swapViewButton").onclick = ViewManageScheduler;
+    document.getElementById("swapViewButton").onclick = null;
 }
 
 //뷰를 일정표 목록으로 전환합니다.
@@ -456,13 +453,11 @@ function ViewManageScheduler() {
         = "translate3d(0, 0, 0)";
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
-
-    document.getElementById("swapViewButton").style.display = "none";
-
+    
     setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 150px)\"");
     setTimeout(ViewEndAnimation, 750);
     
-    document.getElementById("swapViewButton").onclick = ViewToday;
+    document.getElementById("swapViewButton").onclick = null;
 }
 
 //뷰 애니메이션이 종료되었을 때, 애니메이션을 위한 transition을 제거하고, 스왑 버튼을 활성화합니다.
@@ -472,11 +467,13 @@ function ViewEndAnimation() {
 
     swapBtn.style.display = "block";
     if (ManageScheduler) {
+        swapBtn.onclick = ViewToday;
         swapBtn.style.color = "white";
         swapBtn.style.background = "";
         swapBtn.style.bottom = "0px";
         swapBtn.innerHTML = "<div class=\"verticalHelper\"></div>돌아가기";
     } else {
+        swapBtn.onclick = ViewManageScheduler;
         swapBtn.style.color = "none";
         swapBtn.style.background = "rgba(255, 255, 255, 0)";
         swapBtn.style.bottom = "";
