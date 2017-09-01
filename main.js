@@ -434,11 +434,11 @@ function ViewToday() {
     //    = "translate3d(0, calc(-100vh + 64px), 0)";
     //appContent.style.webkitTransform = appContent.style.transform
     //    = "translate3d(0, calc(-100vh + 64px), 0)";
-    navigationBar.style.marginTop = appContent.style.marginTop
-        = "calc(-100vh + 64px)";
-
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
+
+    navigationBar.style.marginTop = appContent.style.marginTop
+        = "calc(-100vh + 64px)";
 
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
@@ -457,12 +457,12 @@ function ViewManageScheduler() {
     //    = "translate3d(0, 0, 0)";
     //appContent.style.webkitTransform = appContent.style.transform
     //    = "translate3d(0, 0, 0)";
-    navigationBar.style.marginTop = appContent.style.marginTop
-        = "0px";
-
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
+    navigationBar.style.marginTop = appContent.style.marginTop
+        = "0px";
+    
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
 
