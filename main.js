@@ -415,7 +415,7 @@ function ReloadCardList(list) {
         if (list.length == 0) return;
         cardList = schedulerBoardList[list[0].idList].layoutData.list;
         cardList.innerHTML = "";
-        for (i = 0, len = list.length; i < len; i++) {
+        for (i = list.length - 1; i >- 0; i--) {
 
             cardObjective = document.createElement('div');
             cardObjective.classList.add("item");
