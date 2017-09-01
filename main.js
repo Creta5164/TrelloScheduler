@@ -437,8 +437,8 @@ function ViewToday() {
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
-    navigationBar.style.marginTop = appContent.style.marginTop
-        = "calc(-100vh + 64px)";
+    setTimeout(eval, 50,
+        "navigationBar.style.marginTop = appContent.style.marginTop = \"0px\"");
 
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
@@ -460,8 +460,8 @@ function ViewManageScheduler() {
     navigationBar.classList.add("animateView");
     appContent.classList.add("animateView");
 
-    navigationBar.style.marginTop = appContent.style.marginTop
-        = "0px";
+    setTimeout(eval, 50,
+        "navigationBar.style.marginTop = appContent.style.marginTop = \"0px\"");
     
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
