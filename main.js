@@ -441,9 +441,11 @@ function ViewToday() {
 
 
     cardContainer.style.overflowX = "";
+    setTimeout(eval, 375, "cardContainer.style.height = \"\"");
     setTimeout(ViewEndAnimation, 750);
-
-    cardContainer.onclick = ViewToday;
+    
+    cardContainer.onclick = ViewManageScheduler;
+    document.getElementById("swapViewButton").onclick = null;
 }
 
 //뷰를 일정표 목록으로 전환합니다.
@@ -458,10 +460,11 @@ function ViewManageScheduler() {
 
     document.getElementById("swapViewButton").style.display = "none";
 
-    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\";");
+    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 150px)\"");
     setTimeout(ViewEndAnimation, 750);
 
     cardContainer.onclick = null;
+    document.getElementById("swapViewButton").onclick = ViewToday;
 }
 
 //뷰 애니메이션이 종료되었을 때, 애니메이션을 위한 transition을 제거하고, 스왑 버튼을 활성화합니다.
@@ -469,7 +472,7 @@ function ViewEndAnimation() {
     appContent.classList = []; navigationBar.classList = [];
     var swapBtn = document.getElementById("swapViewButton");
 
-    swapBtn.style.display = "block";
+    swapBtn.style.display = ManageScheduler ? "block" : "none";
     swapBtn.style.bottom = ManageScheduler ? "0px" : "";
 }
 
