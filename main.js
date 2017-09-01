@@ -478,7 +478,7 @@ function ViewEndAnimation() {
         swapBtn.innerHTML = "<div class=\"verticalHelper\"></div>돌아가기";
     } else {
         swapBtn.style.color = "none";
-        swapBtn.style.background = "none";
+        swapBtn.style.background = "rgba(255, 255, 255, 0)";
         swapBtn.style.bottom = "";
         swapBtn.innerHTML = "";
     }
