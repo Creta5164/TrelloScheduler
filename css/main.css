@@ -38,10 +38,8 @@ h1 {
 }
 
 .animateView {
-    -webkit-transition: margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1) !important;
-    transition: margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1) !important;
-    -moz-transition: margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1) !important;
-    -o-transition: margin-top 0.75s cubic-bezier(0.77, 0, 0.175, 1) !important;
+    -webkit-transition: all 0.75s cubic-bezier(0.77, 0, 0.175, 1) !important;
+    transition: all 0.75s cubic-bezier(0.77, 0, 0.175, 1) !important;
 }
 
 #appView {
