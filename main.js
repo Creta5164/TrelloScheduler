@@ -356,6 +356,8 @@ function LoadProgramLayout() {
     for (var i = 0; i < days.length; i++) {
         card = CreateCardLayout();
         card.header.innerHTML = "<a>+ 목표 추가</a>";
+        card.header.setAttribute("dateId", days[i]);
+        card.header.setAttribute("onclick", "CreateObjective(this);");
         card.footer.innerHTML = kdays[i] + "요일";
 
         schedulerBoardList[schedulerBoardList.list[i]].layoutData = card;
@@ -461,17 +463,26 @@ function ViewManageScheduler() {
 
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
-
-    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 150px)\"");
+    
+    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 150px)\";");
     setTimeout(ViewEndAnimation, 750);
     
     document.getElementById("swapViewButton").onclick = ViewToday;
+}
+
+//새로운 목표를 만듭니다. (폼 생성)
+function CreateObjective(target)
+{
+
 }
 
 //뷰 애니메이션이 종료되었을 때, 애니메이션을 위한 transition을 제거하고, 스왑 버튼을 활성화합니다.
 function ViewEndAnimation() {
     appContent.classList = []; navigationBar.classList = [];
     var swapBtn = document.getElementById("swapViewButton");
+
+    navigationBar.setAttribute("class", "");
+    appContent.setAttribute("class", "");
 
     swapBtn.style.display = "block";
     swapBtn.style.height = "";
