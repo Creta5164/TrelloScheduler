@@ -453,7 +453,7 @@ function ViewToday() {
     document.getElementById("swapViewButton").onclick = ViewManageScheduler;
     
     $("#cardContainer").stop(true, true).animate({
-        scrollLeft: $("#" + "cards_" + days[date.getDay()]).offset().left
+        scrollLeft: $("#cardContainer").scrollLeft() - $("html").width() * 0.03 + $("#" + "cards_" + days[date.getDay()]).position().left
     }, 1000, "easeInOutQuart");
 }
 
