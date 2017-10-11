@@ -371,6 +371,9 @@ function LoadProgramLayout() {
     achivementToday.id = "achivementToday";
     appView.appendChild(achivementToday);
 
+    var achivementTitle = document.createElement('div');
+    achivementTitle.innerHTML = "제목";
+
     loadProgram(5);
 }
 
@@ -451,10 +454,12 @@ function ViewToday() {
     setTimeout(ViewEndAnimation, 750);
 
     document.getElementById("swapViewButton").onclick = ViewManageScheduler;
-    
-    $("#cardContainer").stop(true, true).animate({
-        scrollLeft: $("#cardContainer").scrollLeft() - $("html").width() * 0.03 + $("#" + "cards_" + days[date.getDay()]).position().left
-    }, 750, "easeInOutQuart");
+
+    setTimeout(function () {
+        $("#cardContainer").stop(true, true).animate({
+            scrollLeft: $("#cardContainer").scrollLeft() + $("#" + "cards_" + days[date.getDay()]).position().left - ($("html").width() / 2 - 150)
+        }, 750, "easeInOutQuart");
+    }, 500);
 }
 
 //뷰를 일정표 목록으로 전환합니다.
