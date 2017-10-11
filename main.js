@@ -385,8 +385,22 @@ function LoadProgramLayout() {
     achivementToday.id = "achivementToday";
     appView.appendChild(achivementToday);
 
+    var achivementDate = document.createElement('div');
+    achivementDate.innerHTML = "요일";
+    achivementDate.classList.add('date');
+
     var achivementTitle = document.createElement('div');
     achivementTitle.innerHTML = "제목";
+    achivementTitle.classList.add('title');
+
+    var achivementDesc = document.createElement('div');
+    achivementDesc.innerHTML = "내용";
+    achivementDesc.contentEditable = true;
+    achivementDesc.classList.add('description');
+
+    achivementToday.appendChild(achivementDate);
+    achivementToday.appendChild(achivementTitle);
+    achivementToday.appendChild(achivementDesc);
 
     loadProgram(5);
 }

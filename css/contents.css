@@ -85,6 +85,26 @@
     border-radius:0 0 3px 3px;
 }
 
+#achivementToday .date {
+    width: 100%;
+    margin-top:30px;
+    text-align: center;
+    color: white;
+    font-size: 16pt;
+}
+
+#achivementToday .title {
+    padding: 5vh 5% 0 5%;
+    color: white;
+    font-size: 48pt;
+}
+
+#achivementToday .description {
+    padding: 2vh 10% 0 10%;
+    color: white;
+    font-size: 20pt;
+}
+
 /* Wallpaper Engine */
 @media screen and (device-width: 100vw) and (device-height: 100vh) {
 
@@ -97,5 +117,23 @@
 
 /* Mobile */
 @media screen and (max-width: 480px) {
+    #achivementToday .date {
+        width: 100%;
+        margin-top: 30px;
+        text-align: center;
+        color: white;
+        font-size: 16pt;
+    }
 
+    #achivementToday .title {
+        padding: 5vh 5% 0 5%;
+        color: white;
+        font-size: 48pt;
+    }
+
+    #achivementToday .description {
+        padding: 2vh 10% 0 10%;
+        color: white;
+        font-size: 20pt;
+    }
 }
