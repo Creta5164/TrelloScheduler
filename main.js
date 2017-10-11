@@ -451,8 +451,10 @@ function ViewToday() {
     setTimeout(ViewEndAnimation, 750);
 
     document.getElementById("swapViewButton").onclick = ViewManageScheduler;
-
-    AreaSmoothScrollTo("cardContainer", "cards_" + days[date.getDay()]);
+    
+    $("#cardContainer").stop(true, true).animate({
+        scrollLeft: $("#" + "cards_" + days[date.getDay()]).offset().left
+    }, 1000, "easeInOutQuart");
 }
 
 //뷰를 일정표 목록으로 전환합니다.
@@ -579,14 +581,6 @@ function InitSmoothScroll(ease)
                 }
             }
         });
-}
-
-//(컨테이너)대상으로 스크롤합니다.
-function AreaSmoothScrollTo(parent, name, ease) {
-    if (ease == null) ease = "easeInOutQuart";
-    $("#"+parent).stop(true, true).animate({
-        scrollTop: $("#"+name).offset().left
-    }, 1000, ease);
 }
 
 //대상으로 스크롤합니다.
