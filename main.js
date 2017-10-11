@@ -4,6 +4,8 @@
 /////////////////////////////////////////////////////////////////
 
 let isMobile = false;
+let isInWebAppiOS;
+let isInWebAppChrome;
 
 const schedulerBoardName = "TrelloScheduler";    //Trello
 const days  = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -31,6 +33,9 @@ let resizeCall;
 
 //주 진입부입니다.
 function init() {
+    isInWebAppiOS = (window.navigator.standalone == true);
+    isInWebAppChrome = (window.matchMedia('(display-mode: standalone)').matches);
+
     window.scrollTo(0, 0);
 
     isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -39,7 +44,7 @@ function init() {
     popupContainer = document.getElementById('popupContainer');
     popupContainer.style.marginTop = "-25px";
 
-    if (isMobile && Cookies.get('recommandAddToHome') != 'Y') {
+    if (!(isInWebAppiOS || isInWebAppChrome) && isMobile && Cookies.get('recommandAddToHome') != 'Y') {
 
         popupContainer.classList.add('popupAppear');
 
@@ -531,10 +536,12 @@ function LoadFailed() {
 
 function OnResizeEvent() {
     if (programLoaded) {
-        var ww = $("html").width();
-        $("#cardContainer").stop(true, true).animate({
-            scrollLeft: $("#cardContainer").scrollLeft() + $("#" + "cards_" + days[date.getDay()]).position().left - (ww / 2 - 155)
-        }, 750, "easeInOutQuart");
+        if (!ManageScheduler) {
+            var ww = $("html").width();
+            $("#cardContainer").stop(true, true).animate({
+                scrollLeft: $("#cardContainer").scrollLeft() + $("#" + "cards_" + days[date.getDay()]).position().left - (ww / 2 - 155)
+            }, 750, "easeInOutQuart");
+        }
     }
 }
 
