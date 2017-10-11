@@ -454,7 +454,7 @@ function ViewToday() {
     
     $("#cardContainer").stop(true, true).animate({
         scrollLeft: $("#cardContainer").scrollLeft() - $("html").width() * 0.03 + $("#" + "cards_" + days[date.getDay()]).position().left
-    }, 1000, "easeInOutQuart");
+    }, 750, "easeInOutQuart");
 }
 
 //뷰를 일정표 목록으로 전환합니다.
