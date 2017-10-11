@@ -26,6 +26,8 @@ let appContent;
 let cardContainer;
 let ManageScheduler;
 
+let date;
+
 //주 진입부입니다.
 function init() {
     window.scrollTo(0, 0);
@@ -66,7 +68,7 @@ function init() {
     navigationBar = document.getElementById("navi");
     appContent = document.getElementById("appContent");
 
-    //$(window).resize(OnResizeEvent);
+    date = new Date();
 }
 
 //로그인 상태를 확인하고, 표시할 것과 표시되지 말아야 할 것을 업데이트합니다.
@@ -359,6 +361,7 @@ function LoadProgramLayout() {
         card.header.setAttribute("dateId", days[i]);
         card.header.setAttribute("onclick", "CreateObjective(this);");
         card.footer.innerHTML = kdays[i] + "요일";
+        card.id = "cards_" + days[i];
 
         schedulerBoardList[schedulerBoardList.list[i]].layoutData = card;
         _cardContainer.appendChild(card.card);
@@ -421,9 +424,9 @@ function ReloadCardList(list) {
 
             cardObjective = document.createElement('div');
             cardObjective.classList.add("item");
-            cardObjective.innerHTML = "<h1>title</h1><p>desc</p>"
-                .replace("title", list[i].name)
-                .replace("desc", list[i].desc);
+            cardObjective.innerHTML = "<h1>tt</h1><p>dd</p>"
+                .replace("tt", list[i].name)
+                .replace("dd", list[i].desc);
             cardList.appendChild(cardObjective);
         }
     }
@@ -448,6 +451,8 @@ function ViewToday() {
     setTimeout(ViewEndAnimation, 750);
 
     document.getElementById("swapViewButton").onclick = ViewManageScheduler;
+
+    AreaSmoothScrollTo("cardContainer", "cards_" + days[date.getDay()]);
 }
 
 //뷰를 일정표 목록으로 전환합니다.
@@ -574,6 +579,14 @@ function InitSmoothScroll(ease)
                 }
             }
         });
+}
+
+//(컨테이너)대상으로 스크롤합니다.
+function AreaSmoothScrollTo(parent, name, ease) {
+    if (ease == null) ease = "easeInOutQuart";
+    $("#"+parent).stop(true, true).animate({
+        scrollTop: $("#"+name).offset().top
+    }, 1000, ease);
 }
 
 //대상으로 스크롤합니다.
