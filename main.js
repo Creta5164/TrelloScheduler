@@ -199,7 +199,7 @@ function loadProgram(steps, state) {
             RunLoadRequest(rdays.length,
                 "요일별 리스트를 추가하는 중...",
                 ICreateLists,
-                4
+                1
             );
             
             return;
