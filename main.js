@@ -27,6 +27,7 @@ let cardContainer;
 let ManageScheduler;
 
 let date;
+let resizeCall;
 
 //주 진입부입니다.
 function init() {
@@ -68,7 +69,15 @@ function init() {
     navigationBar = document.getElementById("navi");
     appContent = document.getElementById("appContent");
 
+    $(window).resize(WaitForResizeEnd);
+
     date = new Date();
+}
+
+function WaitForResizeEnd()
+{
+    clearTimeout(resizeCall);
+    resizeCall = setTimeout(OnResizeEvent, 100);
 }
 
 //로그인 상태를 확인하고, 표시할 것과 표시되지 말아야 할 것을 업데이트합니다.
@@ -521,8 +530,12 @@ function LoadFailed() {
 }
 
 function OnResizeEvent() {
-    if (programLoaded)
-        ManageScheduler ? ViewManageScheduler() : ViewToday();
+    if (programLoaded) {
+        var ww = $("html").width();
+        $("#cardContainer").stop(true, true).animate({
+            scrollLeft: $("#cardContainer").scrollLeft() + $("#" + "cards_" + days[date.getDay()]).position().left - (ww / 2 - 155)
+        }, 750, "easeInOutQuart");
+    }
 }
 
 function ShowCommandLineAlert() {
