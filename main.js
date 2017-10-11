@@ -8,7 +8,7 @@ let isInWebAppiOS;
 let isInWebAppChrome;
 
 const schedulerBoardName = "TrelloScheduler";    //Trello
-const days  = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const kdays = ["일", "월", "화", "수", "목", "금", "토"];
 const rdays = days.reverse();
 let loginState;                                  //로그인 상태 (bool)
@@ -17,10 +17,10 @@ let firstCreated;                                //최초로 보드가 생성된
 let schedulerBoardData;                          //Trello 스케줄러가 생성한 보드의 데이터 (Object)
 let schedulerBoardList;                          //Trello 스케줄러의 리스트 목록 (Array > Object)
 
-let requestCall;                                 
-let loadState;                                   
+let requestCall;
+let loadState;
 
-let ConfirmPopup;                                
+let ConfirmPopup;
 let popupContainer;
 
 let navigationBar;
@@ -79,8 +79,7 @@ function init() {
     date = new Date();
 }
 
-function WaitForResizeEnd()
-{
+function WaitForResizeEnd() {
     clearTimeout(resizeCall);
     resizeCall = setTimeout(OnResizeEvent, 100);
 }
@@ -161,7 +160,7 @@ function loadProgram(steps, state) {
         default:
             LoadFailed();
             return;
-            
+
         case 0://보드를 찾습니다.
 
             document.getElementById("loadingState").innerText = "Trello 스케줄러 보드를 확인하는 중...";
@@ -172,7 +171,7 @@ function loadProgram(steps, state) {
             );
 
             return;
-            
+
         case 1://보드 안의 리스트가 정상인지 확인합니다.
 
             document.getElementById("loadingState").innerText = "보드의 리스트를 확인하는 중...";
@@ -186,12 +185,14 @@ function loadProgram(steps, state) {
 
         case 2://보드의 리스트를 모두 지웁니다.
 
-            RunLoadRequest(schedulerBoardList.length,
-                "리스트를 초기화하는 중...",
-                IRemoveLists,
-                3
-            );
-            
+            if (schedulerBoardList.length != 0)
+                RunLoadRequest(schedulerBoardList.length,
+                    "리스트를 초기화하는 중...",
+                    IRemoveLists,
+                    3
+                );
+            else loadProgram(3);
+
             return;
 
         case 3://보드에 요일별로 리스트를 추가합니다.
@@ -201,7 +202,7 @@ function loadProgram(steps, state) {
                 ICreateLists,
                 1
             );
-            
+
             return;
 
         case 4://프로그램을 표시하기 위해 준비작업을 합니다.
@@ -264,10 +265,10 @@ function CheckSchedulerBoardExists(list) {
 //보드의 리스트에 문제가 없는 지 확인합니다.
 function CheckSchedulerBoardStatus(list) {
     if (programLoaded) return;
-    schedulerBoardList = {"list":[]};
+    schedulerBoardList = { "list": [] };
 
     if (list.length == 0) {
-        loadProgram(2);
+        loadProgram(3);
         return;
     }
 
@@ -324,9 +325,15 @@ function ICreateLists(index) {
 //동기 작업을 시작합니다.
 function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
 
+    console.log(limit == null);
+    console.log(text == null);
+    console.log(callAsyncFunction == null);
+    console.log(finishFunction == null);
+    console.log(programLoaded);
+
     if (limit == null || text == null || callAsyncFunction == null ||
         finishFunction == null || programLoaded) return;
-    
+
     requestCall = {
         "limit": limit,
         "text": text,
@@ -350,7 +357,7 @@ function RunLoadAsyncResponse() {
             setTimeout(requestCall.finishFunction, 500);
         else
             setTimeout(loadProgram, 500, requestCall.finish);
-    } else 
+    } else
         requestCall.call(requestCall.async);
 
     document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
@@ -359,7 +366,7 @@ function RunLoadAsyncResponse() {
 //프로그램의 레이아웃을 준비합니다.
 function LoadProgramLayout() {
     var card, _cardContainer, cardHelper, appView = document.getElementById("appView");
-    
+
     _cardContainer = document.createElement('div');
     _cardContainer.classList.add("cardList");
     _cardContainer.id = "cardContainer";
@@ -428,7 +435,7 @@ function CreateCardLayout() {
     footer.classList.add("footer");
     card.appendChild(footer);
 
-    return {"card":card, "header":header, "main":main, "list":list, "footer":footer};
+    return { "card": card, "header": header, "main": main, "list": list, "footer": footer };
 }
 
 //프로그램의 주 진입부입니다.
@@ -476,7 +483,7 @@ function ViewToday() {
 
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
-    
+
     cardContainer.style.overflowX = "";
     setTimeout(eval, 375, "cardContainer.style.height = \"\"");
     setTimeout(ViewEndAnimation, 750);
@@ -504,16 +511,15 @@ function ViewManageScheduler() {
 
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
-    
+
     setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 150px)\";");
     setTimeout(ViewEndAnimation, 750);
-    
+
     document.getElementById("swapViewButton").onclick = ViewToday;
 }
 
 //새로운 목표를 만듭니다. (폼 생성)
-function CreateObjective(target)
-{
+function CreateObjective(target) {
 
 }
 
@@ -584,8 +590,7 @@ function ShowCommandLineAlert() {
 
 //from : https://css-tricks.com/snippets/jquery/smooth-scrolling/
 //모든 해시태그에 스크롤 이벤트를 추가합니다.
-function InitSmoothScroll(ease)
-{
+function InitSmoothScroll(ease) {
     if (ease == null) ease = "easeInOutQuart";
     // Select all links with hashes
     $('a[href*="#"]')
@@ -627,6 +632,6 @@ function InitSmoothScroll(ease)
 function SmoothScrollTo(name, ease) {
     if (ease == null) ease = "easeInOutQuart";
     $('html, body').stop(true, true).animate({
-        scrollTop: $("#"+name).offset().top
+        scrollTop: $("#" + name).offset().top
     }, 1000, ease);
 }
