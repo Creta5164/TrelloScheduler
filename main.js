@@ -361,7 +361,7 @@ function LoadProgramLayout() {
         card.header.setAttribute("dateId", days[i]);
         card.header.setAttribute("onclick", "CreateObjective(this);");
         card.footer.innerHTML = kdays[i] + "요일";
-        card.id = "cards_" + days[i];
+        card.card.id = "cards_" + days[i];
 
         schedulerBoardList[schedulerBoardList.list[i]].layoutData = card;
         _cardContainer.appendChild(card.card);
@@ -585,7 +585,7 @@ function InitSmoothScroll(ease)
 function AreaSmoothScrollTo(parent, name, ease) {
     if (ease == null) ease = "easeInOutQuart";
     $("#"+parent).stop(true, true).animate({
-        scrollTop: $("#"+name).offset().top
+        scrollTop: $("#"+name).offset().left
     }, 1000, ease);
 }
 
