@@ -477,7 +477,7 @@ function ReloadCardList(list) {
         var curr_month = date.getMonth();
         var curr_year = date.getFullYear();
 
-        todoLayout.todoToday.innerHTML = "{0}년 {1}월 {2}일 {3}요일"
+        todoLayout.date.innerHTML = "{0}년 {1}월 {2}일 {3}요일"
             .replace("{0}", curr_year)
             .replace("{1}", curr_month)
             .replace("{2}", curr_date)
