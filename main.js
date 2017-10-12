@@ -504,7 +504,7 @@ function ReloadCardList(list) {
 function CheckTODO()
 {
     if (schedulerBoardList[schedulerBoardList.list[date.getDay()]].layoutData.list.childElementCount == 0) {
-        todoLayout.todoToday.innerHTML += "<br><br>" + kdays[date.getDay()] + "요일의 일정이 없네요...<br>윗쪽을 클릭해서 일정을 추가해보세요!";
+        todoLayout.date.innerHTML += "<br><br>" + kdays[date.getDay()] + "요일의 일정이 없네요...<br>윗쪽을 클릭해서 일정을 추가해보세요!";
     }
 }
 
