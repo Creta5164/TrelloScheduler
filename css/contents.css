@@ -66,6 +66,8 @@
 	font-size:18pt;
 	font-weight:500;
 	color:black;
+    word-wrap:break-word;
+    white-space:normal;
 }
 
 .card .item p {
