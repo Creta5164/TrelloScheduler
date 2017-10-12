@@ -422,8 +422,8 @@ function LoadProgramLayout() {
         "descrption": todoDesc
     };
 
-    todoTitle.style.display = "none";
-    todoDesc.style.display = "none";
+    //todoTitle.style.display = "none";
+    //todoDesc.style.display = "none";
 
     loadProgram(5);
 }
