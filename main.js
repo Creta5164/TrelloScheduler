@@ -341,7 +341,7 @@ function RunLoadRequest(limit, text, textTarget, callAsyncFunction, finishFuncti
         "logTarget": textTarget
     };
 
-    document.getElementById("loadingState").innerText = text + "(0 / " + requestCall.limit + ")";
+    textTarget.innerHTML = text + "(0 / " + requestCall.limit + ")";
 
     callAsyncFunction(0);
 }
