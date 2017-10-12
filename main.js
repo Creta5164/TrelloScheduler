@@ -325,15 +325,9 @@ function ICreateLists(index) {
 
 //동기 작업을 시작합니다.
 function RunLoadRequest(limit, text, callAsyncFunction, finishFunction, catchDataFunction) {
-
-    console.log(limit == null);
-    console.log(text == null);
-    console.log(callAsyncFunction == null);
-    console.log(finishFunction == null);
-    console.log(programLoaded);
-
+    
     if (limit == null || text == null || callAsyncFunction == null ||
-        finishFunction == null || programLoaded) return;
+        finishFunction == null) return;
 
     requestCall = {
         "limit": limit,
