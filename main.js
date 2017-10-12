@@ -471,11 +471,27 @@ function ReloadCardList(list) {
         }
     } else {
         var cardList, cardObjective;
-        if (list.length == 0) return;
+
+        var curr_date = date.getDate();
+        var curr_month = date.getMonth();
+        var curr_year = date.getFullYear();
+
+        todoLayout.todoToday.innerHTML = "{0}년 {1}월 {2}일 {3}요일"
+            .replace("{0}", curr_year)
+            .replace("{0}", curr_month)
+            .replace("{0}", curr_date)
+            .replace("{0}", kdays[date.getDay()]);
+
+        if (list.length == 0) {
+            if (schedulerBoardList[list[0].idList].name == days[date.getDay()]) {
+                todoLayout.todoToday.innerHTML += "<br><br>" + kdays[date.getDay()] + "요일의 일정이 없네요...<br>윗쪽을 클릭해서 일정을 추가해보세요!";
+            }
+
+            return;
+        }
         cardList = schedulerBoardList[list[0].idList].layoutData.list;
         cardList.innerHTML = "";
         for (i = list.length - 1; i >= 0; i--) {
-
             cardObjective = document.createElement('div');
             cardObjective.classList.add("item");
             cardObjective.innerHTML = "<h1>tt</h1><p>dd</p>"
