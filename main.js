@@ -595,9 +595,12 @@ function ViewEndAnimation() {
 }
 
 //Trello에 요청이 실패됐을 때 호출됩니다.
-function LoadFailed() {
+function LoadFailed(data) {
     programLoaded = false;
     alert("통신하는 도중, 오류가 발생했습니다.");
+
+    console.log(data);
+    return;
     logoutTrello();
     window.location.reload();
 }
