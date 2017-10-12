@@ -475,13 +475,11 @@ function InitProgram() {
 
 function ILoadCardList(index)
 {
-    console.log("불러오는 중... " + index);
     schedulerBoardList[schedulerBoardList.list[index]].layoutData.list.innerHTML = "";
     Trello.get("/lists/" + schedulerBoardList[schedulerBoardList.list[index]].id + "/cards", RunLoadAsyncResponse, LoadFailed);
 }
 
 function GetCardList(list) {
-    console.log("adding cards...");
     /*
     var i, len;
     if (list == null) {
@@ -509,7 +507,6 @@ function GetCardList(list) {
 }
 
 function CheckTODO() {
-    console.log("checking todo...");
     var curr_date = date.getDate();
     var curr_month = date.getMonth();
     var curr_year = date.getFullYear();
