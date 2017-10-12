@@ -115,6 +115,7 @@ h1 {
     position: fixed;
     z-index: -1;
     opacity: 0;
+    display: none;
 }
 
 .popupContainer * {
@@ -122,9 +123,10 @@ h1 {
 }
 
 .popupAppear {
-    margin-top: 0px!important;
+    display: block !important;
+    margin-top: 0px !important;
     opacity: 1;
-    z-index:4;
+    z-index: 4;
 }
 
 .popupAppear * {
