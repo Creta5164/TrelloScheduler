@@ -418,6 +418,7 @@ function LoadProgramLayout() {
 
     todoLayout = {
         "layout": todoToday,
+        "date": todoDate,
         "title": todoTitle,
         "descrption": todoDesc
     };
