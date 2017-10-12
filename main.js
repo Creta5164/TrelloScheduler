@@ -362,7 +362,7 @@ function RunLoadAsyncResponse(data) {
             requestCall.catch(data);
     }
 
-    requestCall.logTarget.innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
+    requestCall.logTarget.innerHTML = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 }
 
 //프로그램의 레이아웃을 준비합니다.
@@ -463,7 +463,7 @@ function InitProgram() {
     //ReloadCardList();
 
     RunLoadRequest(schedulerBoardList.list.length,
-        "목표를 불러오는 중...",
+        "Trello에서 카드 목록을 불러오고 있습니다.",
         todoLayout.date,
         ILoadCardList,
         CheckTODO,
