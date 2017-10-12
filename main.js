@@ -501,8 +501,17 @@ function ReloadCardList(list) {
     }
 }
 
-function CheckTODO()
-{
+function CheckTODO() {
+    var curr_date = date.getDate();
+    var curr_month = date.getMonth();
+    var curr_year = date.getFullYear();
+
+    todoLayout.date.innerHTML = "{0}년 {1}월 {2}일 {3}요일"
+        .replace("{0}", curr_year)
+        .replace("{1}", curr_month)
+        .replace("{2}", curr_date)
+        .replace("{3}", kdays[date.getDay()]);
+    
     if (schedulerBoardList[schedulerBoardList.list[date.getDay()]].layoutData.list.childElementCount == 0) {
         todoLayout.date.innerHTML += "<br><br>" + kdays[date.getDay()] + "요일의 일정이 없네요...<br>윗쪽을 클릭해서 일정을 추가해보세요!";
     }
