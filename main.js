@@ -188,6 +188,7 @@ function loadProgram(steps, state) {
 
             if (schedulerBoardList.length != 0)
                 RunLoadRequest(schedulerBoardList.length,
+                    document.getElementById("loadingState"),
                     "리스트를 초기화하는 중...",
                     IRemoveLists,
                     3
@@ -200,6 +201,7 @@ function loadProgram(steps, state) {
 
             RunLoadRequest(rdays.length,
                 "요일별 리스트를 추가하는 중...",
+                document.getElementById("loadingState"),
                 ICreateLists,
                 1
             );
@@ -324,7 +326,7 @@ function ICreateLists(index) {
 }
 
 //동기 작업을 시작합니다.
-function RunLoadRequest(limit, text, callAsyncFunction, finishFunction, catchDataFunction) {
+function RunLoadRequest(limit, text, textTarget, callAsyncFunction, finishFunction, catchDataFunction) {
     
     if (limit == null || text == null || callAsyncFunction == null ||
         finishFunction == null) return;
@@ -335,7 +337,8 @@ function RunLoadRequest(limit, text, callAsyncFunction, finishFunction, catchDat
         "call": callAsyncFunction,
         "finish": finishFunction,
         "catch" : catchDataFunction,
-        "async": 0
+        "async": 0,
+        "logTarget": textTarget
     };
 
     document.getElementById("loadingState").innerText = text + "(0 / " + requestCall.limit + ")";
@@ -359,7 +362,7 @@ function RunLoadAsyncResponse(data) {
             requestCall.catch(data);
     }
 
-    document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
+    requestCall.logTarget.innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 }
 
 //프로그램의 레이아웃을 준비합니다.
@@ -461,6 +464,7 @@ function InitProgram() {
 
     RunLoadRequest(schedulerBoardList.list.length,
         "목표를 불러오는 중...",
+        todoLayout.date,
         ILoadCardList,
         CheckTODO,
         GetCardList
