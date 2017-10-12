@@ -324,7 +324,7 @@ function ICreateLists(index) {
 }
 
 //동기 작업을 시작합니다.
-function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
+function RunLoadRequest(limit, text, callAsyncFunction, finishFunction, catchDataFunction) {
 
     console.log(limit == null);
     console.log(text == null);
@@ -340,6 +340,7 @@ function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
         "text": text,
         "call": callAsyncFunction,
         "finish": finishFunction,
+        "catch" : catchDataFunction,
         "async": 0
     };
 
@@ -349,7 +350,7 @@ function RunLoadRequest(limit, text, callAsyncFunction, finishFunction) {
 }
 
 //프로그램 로드를 위한 동기 작업을 처리합니다.
-function RunLoadAsyncResponse() {
+function RunLoadAsyncResponse(data) {
     if (++requestCall.async >= requestCall.limit) {
 
         requestCall.async = requestCall.limit;
@@ -358,8 +359,11 @@ function RunLoadAsyncResponse() {
             setTimeout(requestCall.finishFunction, 500);
         else
             setTimeout(loadProgram, 500, requestCall.finish);
-    } else
+    } else {
         requestCall.call(requestCall.async);
+        if (requestCall.catch != null)
+            requestCall.catch(data);
+    }
 
     document.getElementById("loadingState").innerText = requestCall.text + "(" + requestCall.async + " / " + requestCall.limit + ")";
 }
@@ -460,12 +464,25 @@ function InitProgram() {
     ManageScheduler = false;
 
     ReloadCardList();
-    ViewToday();
 
-    CheckTODO();
+    RunLoadRequest(schedulerBoardList.list.length,
+        "목표를 불러오는 중...",
+        ILoadCardList,
+        CheckTODO,
+        GetCardList
+    );
+    
+    ViewToday();
 }
 
-function ReloadCardList(list) {
+function ILoadCardList(index)
+{
+    schedulerBoardList[schedulerBoardList.list[index]].layoutData.list.innerHTML = "";
+    Trello.post("/lists/" + schedulerBoardList[schedulerBoardList.list[index]].id + "/cards", RunLoadAsyncResponse, LoadFailed);
+}
+
+function GetCardList(list) {
+    /*
     var i, len;
     if (list == null) {
         for (i = 0, len = schedulerBoardList.list.length; i < len; i++) {
@@ -473,21 +490,21 @@ function ReloadCardList(list) {
             Trello.get("/lists/" + schedulerBoardList[schedulerBoardList.list[i]].id + "/cards", ReloadCardList, LoadFailed);
         }
     } else {
-        var cardList, cardObjective;
-        
-        if (list.length == 0)
-            return;
+    */
+    var cardList, cardObjective;
+    
+    if (list.length == 0)
+        return;
 
-        cardList = schedulerBoardList[list[0].idList].layoutData.list;
-        cardList.innerHTML = "";
-        for (i = list.length - 1; i >= 0; i--) {
-            cardObjective = document.createElement('div');
-            cardObjective.classList.add("item");
-            cardObjective.innerHTML = "<h1>tt</h1><p>dd</p>"
-                .replace("tt", list[i].name)
-                .replace("dd", list[i].desc);
-            cardList.appendChild(cardObjective);
-        }
+    cardList = schedulerBoardList[list[0].idList].layoutData.list;
+    cardList.innerHTML = "";
+    for (i = list.length - 1; i >= 0; i--) {
+        cardObjective = document.createElement('div');
+        cardObjective.classList.add("item");
+        cardObjective.innerHTML = "<h1>tt</h1><p>dd</p>"
+            .replace("tt", list[i].name)
+            .replace("dd", list[i].desc);
+        cardList.appendChild(cardObjective);
     }
 }
 
