@@ -478,9 +478,9 @@ function ReloadCardList(list) {
 
         todoLayout.todoToday.innerHTML = "{0}년 {1}월 {2}일 {3}요일"
             .replace("{0}", curr_year)
-            .replace("{0}", curr_month)
-            .replace("{0}", curr_date)
-            .replace("{0}", kdays[date.getDay()]);
+            .replace("{1}", curr_month)
+            .replace("{2}", curr_date)
+            .replace("{3}", kdays[date.getDay()]);
 
         if (list.length == 0) {
             if (schedulerBoardList[list[0].idList].name == days[date.getDay()]) {
