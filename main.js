@@ -400,14 +400,16 @@ function LoadProgramLayout() {
     achivementTitle.innerHTML = "제목";
     achivementTitle.classList.add('title');
 
+    var achivementDescArea = document.createElement('div');
+    achivementDescArea.classList.add('description');
+
     var achivementDesc = document.createElement('div');
-    achivementDesc.innerHTML = "내용";
     achivementDesc.contentEditable = true;
-    achivementDesc.classList.add('description');
 
     achivementToday.appendChild(achivementDate);
     achivementToday.appendChild(achivementTitle);
-    achivementToday.appendChild(achivementDesc);
+    achivementToday.appendChild(achivementDescArea);
+    achivementDescArea.appendChild(achivementDesc);
 
     loadProgram(5);
 }
