@@ -483,13 +483,9 @@ function ReloadCardList(list) {
             .replace("{2}", curr_date)
             .replace("{3}", kdays[date.getDay()]);
 
-        if (list.length == 0) {
-            if (schedulerBoardList[list[0].idList].name == days[date.getDay()]) {
-                todoLayout.todoToday.innerHTML += "<br><br>" + kdays[date.getDay()] + "요일의 일정이 없네요...<br>윗쪽을 클릭해서 일정을 추가해보세요!";
-            }
-
+        if (list.length == 0)
             return;
-        }
+
         cardList = schedulerBoardList[list[0].idList].layoutData.list;
         cardList.innerHTML = "";
         for (i = list.length - 1; i >= 0; i--) {
@@ -500,6 +496,15 @@ function ReloadCardList(list) {
                 .replace("dd", list[i].desc);
             cardList.appendChild(cardObjective);
         }
+
+        CheckTODO();
+    }
+}
+
+function CheckTODO()
+{
+    if (schedulerBoardList[schedulerBoardList.list[date.getDay()]].layoutData.list.childElementCount == 0) {
+        todoLayout.todoToday.innerHTML += "<br><br>" + kdays[date.getDay()] + "요일의 일정이 없네요...<br>윗쪽을 클릭해서 일정을 추가해보세요!";
     }
 }
 
