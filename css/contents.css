@@ -85,7 +85,7 @@
     border-radius:0 0 3px 3px;
 }
 
-#achivementToday .date {
+#todoToday .date {
     width: 100%;
     margin-top:30px;
     text-align: center;
@@ -93,13 +93,13 @@
     font-size: 16pt;
 }
 
-#achivementToday .title {
+#todoToday .title {
     padding: 5vh 5% 0 5%;
     color: white;
     font-size: 48pt;
 }
 
-#achivementToday .description {
+#todoToday .description {
     padding: 2vh 10% 0 10%;
     color: white;
     font-size: 20pt;
@@ -117,7 +117,7 @@
 
 /* Mobile */
 @media screen and (max-width: 480px) {
-    #achivementToday .date {
+    #todoToday .date {
         width: 100%;
         margin-top: 30px;
         text-align: center;
@@ -125,13 +125,13 @@
         font-size: 16pt;
     }
 
-    #achivementToday .title {
+    #todoToday .title {
         padding: 5vh 5% 0 5%;
         color: white;
         font-size: 48pt;
     }
 
-    #achivementToday .description {
+    #todoToday .description {
         padding: 2vh 10% 0 10%;
         color: white;
         font-size: 20pt;
