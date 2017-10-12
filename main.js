@@ -398,9 +398,9 @@ function LoadProgramLayout() {
     todoDate.classList.add('date');
 
     var todoTitle = document.createElement('div');
-    todoTitle.innerHTML = "제목";
     todoTitle.contentEditable = true;
     todoTitle.style.outline = "none";
+    todoTitle.setAttribute("hint", "제목");
     todoTitle.classList.add('title');
 
     var todoDescArea = document.createElement('div');
@@ -409,6 +409,7 @@ function LoadProgramLayout() {
     var todoDesc = document.createElement('div');
     todoDesc.contentEditable = true;
     todoDesc.style.outline = "none";
+    todoDesc.setAttribute("hint", "내용, 설명, 해야할 일 등...");
 
     todoToday.appendChild(todoDate);
     todoToday.appendChild(todoTitle);
@@ -420,6 +421,9 @@ function LoadProgramLayout() {
         "title": todoTitle,
         "descrption": todoDesc
     };
+
+    todoTitle.style.display = "none";
+    todoDesc.style.display = "none";
 
     loadProgram(5);
 }

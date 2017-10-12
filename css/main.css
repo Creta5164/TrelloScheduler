@@ -251,6 +251,12 @@ h1 {
     padding-top: 40vh;
 }
 
+[contenteditable=true]:empty:before {
+    content: attr(hint);
+    display: block;
+    color : rgba(255, 255, 255, 0.5);
+}
+
 /* Wallpaper Engine */
 @media screen and (device-width: 100vw) and (device-height: 100vh) {
 
