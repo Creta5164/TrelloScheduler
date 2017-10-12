@@ -472,7 +472,7 @@ function InitProgram() {
 function ILoadCardList(index)
 {
     schedulerBoardList[schedulerBoardList.list[index]].layoutData.list.innerHTML = "";
-    Trello.post("/lists/" + schedulerBoardList[schedulerBoardList.list[index]].id + "/cards", RunLoadAsyncResponse, LoadFailed);
+    Trello.get("/lists/" + schedulerBoardList[schedulerBoardList.list[index]].id + "/cards", RunLoadAsyncResponse, LoadFailed);
 }
 
 function GetCardList(list) {
