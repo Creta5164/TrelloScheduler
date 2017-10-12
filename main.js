@@ -461,6 +461,8 @@ function InitProgram() {
 
     ReloadCardList();
     ViewToday();
+
+    CheckTODO();
 }
 
 function ReloadCardList(list) {
@@ -496,8 +498,6 @@ function ReloadCardList(list) {
                 .replace("dd", list[i].desc);
             cardList.appendChild(cardObjective);
         }
-
-        CheckTODO();
     }
 }
 
