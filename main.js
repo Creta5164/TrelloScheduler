@@ -27,6 +27,7 @@ let navigationBar;
 let appContent;
 let cardContainer;
 let ManageScheduler;
+let todoLayout;
 
 let date;
 let resizeCall;
@@ -388,28 +389,37 @@ function LoadProgramLayout() {
         _cardContainer.appendChild(card.card);
     }
 
-    var achivementToday = document.createElement('div');
-    achivementToday.id = "achivementToday";
-    appView.appendChild(achivementToday);
+    var todoToday = document.createElement('div');
+    todoToday.id = "todoToday";
+    appView.appendChild(todoToday);
 
-    var achivementDate = document.createElement('div');
-    achivementDate.innerHTML = "요일";
-    achivementDate.classList.add('date');
+    var todoDate = document.createElement('div');
+    todoDate.innerHTML = "요일";
+    todoDate.classList.add('date');
 
-    var achivementTitle = document.createElement('div');
-    achivementTitle.innerHTML = "제목";
-    achivementTitle.classList.add('title');
+    var todoTitle = document.createElement('div');
+    todoTitle.innerHTML = "제목";
+    todoTitle.contentEditable = true;
+    todoTitle.style.outline = "none";
+    todoTitle.classList.add('title');
 
-    var achivementDescArea = document.createElement('div');
-    achivementDescArea.classList.add('description');
+    var todoDescArea = document.createElement('div');
+    todoDescArea.classList.add('description');
 
-    var achivementDesc = document.createElement('div');
-    achivementDesc.contentEditable = true;
+    var todoDesc = document.createElement('div');
+    todoDesc.contentEditable = true;
+    todoDesc.style.outline = "none";
 
-    achivementToday.appendChild(achivementDate);
-    achivementToday.appendChild(achivementTitle);
-    achivementToday.appendChild(achivementDescArea);
-    achivementDescArea.appendChild(achivementDesc);
+    todoToday.appendChild(todoDate);
+    todoToday.appendChild(todoTitle);
+    todoToday.appendChild(todoDescArea);
+    todoDescArea.appendChild(todoDesc);
+
+    todoLayout = {
+        "layout": todoToday,
+        "title": todoTitle,
+        "descrption": todoDesc
+    };
 
     loadProgram(5);
 }
