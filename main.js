@@ -463,7 +463,7 @@ function CreateCardLayout() {
 function InitProgram() {
     ManageScheduler = false;
 
-    ReloadCardList();
+    //ReloadCardList();
 
     RunLoadRequest(schedulerBoardList.list.length,
         "목표를 불러오는 중...",
