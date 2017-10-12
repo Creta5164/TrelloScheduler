@@ -105,6 +105,8 @@ function updateLoginElements() {
 
 //Trello에 로그인 요청을 보냅니다.
 function loginTrello() {
+    if (!checkLoaded()) return;
+
     Trello.authorize({
         type: 'redirect',
         name: 'Trello 스케줄러',
@@ -116,6 +118,10 @@ function loginTrello() {
         success: Trello_LoginSuccess,
         error: Trello_LoginFail
     });
+}
+
+function checkLoaded() {
+    return document.readyState === "complete" || document.readyState === "interactive";
 }
 
 //Trello가 로그인을 시도했을 때 호출합니다.
@@ -564,7 +570,7 @@ function ViewManageScheduler() {
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
 
-    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 150px)\";");
+    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 145px)\";");
     setTimeout(ViewEndAnimation, 750);
 
     document.getElementById("swapViewButton").onclick = ViewToday;
