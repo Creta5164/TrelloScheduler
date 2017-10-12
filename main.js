@@ -345,7 +345,7 @@ function RunLoadRequest(limit, text, callAsyncFunction, finishFunction, catchDat
 
 //프로그램 로드를 위한 동기 작업을 처리합니다.
 function RunLoadAsyncResponse(data) {
-    if (++requestCall.async >= requestCall.limit) {
+    if (++requestCall.async > requestCall.limit) {
 
         requestCall.async = requestCall.limit;
 
