@@ -386,7 +386,7 @@ function LoadProgramLayout() {
 
     for (var i = 0; i < days.length; i++) {
         card = CreateCardLayout();
-        card.header.innerHTML = "<a>+ 목표 추가</a>";
+        card.header.innerHTML = "<a onclick=\"CreateObjective\">+ 목표 추가</a>";
         card.header.setAttribute("dateId", days[i]);
         card.header.setAttribute("onclick", "CreateObjective(this);");
         card.footer.innerHTML = kdays[i] + "요일";
@@ -469,7 +469,7 @@ function InitProgram() {
     //ReloadCardList();
 
     RunLoadRequest(schedulerBoardList.list.length,
-        "Trello에서 카드 목록을 불러오고 있습니다.",
+        "Trello에서 카드 목록을\n불러오고 있습니다.",
         todoLayout.date,
         ILoadCardList,
         CheckTODO,
@@ -578,7 +578,7 @@ function ViewManageScheduler() {
 
 //새로운 목표를 만듭니다. (폼 생성)
 function CreateObjective(target) {
-
+    console.log(target);
 }
 
 //뷰 애니메이션이 종료되었을 때, 애니메이션을 위한 transition을 제거하고, 스왑 버튼을 활성화합니다.
