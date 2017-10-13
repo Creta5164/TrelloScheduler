@@ -282,11 +282,11 @@ function CheckSchedulerBoardStatus(list) {
     }
 
     var curruption;
-    for (var j, i = 0; i < days.length; i++) {
+    for (var j, i = 0; i < rdays.length; i++) {
         curruption = true;
 
         for (j = 0; j < list.length; j++) {
-            if (list[j].name != days[i]) continue;
+            if (list[j].name != rdays[i]) continue;
             else {
                 schedulerBoardList.list.push(list[j].id);
                 schedulerBoardList[list[j].id] = list[j];
@@ -386,9 +386,8 @@ function LoadProgramLayout() {
 
     for (var i = 0; i < days.length; i++) {
         card = CreateCardLayout();
-        card.header.innerHTML = "<a>+ 목표 추가</a>";
-        card.header.setAttribute("dateId", days[i]);
-        card.header.setAttribute("onclick", "CreateObjective(this.getAttribute('dateId'));");
+        card.header.innerHTML = "<a onclick=\"CreateObjective(this.parent.parent.getAttribute('dateId'));\">+ 목표 추가</a>";
+        card.card.setAttribute("dateId", days[i]);
         card.footer.innerHTML = kdays[i] + "요일";
         card.card.id = "cards_" + days[i];
 
