@@ -205,7 +205,7 @@ function loadProgram(steps, state) {
 
         case 3://보드에 요일별로 리스트를 추가합니다.
 
-            RunLoadRequest(rdays.length,
+            RunLoadRequest(days.length,
                 "요일별 리스트를 추가하는 중...",
                 document.getElementById("loadingState"),
                 ICreateLists,
@@ -310,8 +310,8 @@ function CheckSchedulerBoardStatus(list) {
 function IRemoveLists(index) {
 
     //사용하는 데 필요한 요일의 리스트가 이미 있으면 제거하지 않음.
-    for (var i = 0; i < rdays.length; i++)
-        if (rdays[i] == schedulerBoardList[index].name) {
+    for (var i = 0; i < days.length; i++)
+        if (days[i] == schedulerBoardList[index].name) {
             RunLoadAsyncResponse();
             return;
         }
@@ -324,11 +324,11 @@ function ICreateLists(index) {
 
     //이미 해당 요일의 카드가 존재하면 추가하지 않고 진행.
     for (var i = 0; i < schedulerBoardList.length; i++)
-        if (schedulerBoardList[i].name == rdays[index]) {
+        if (schedulerBoardList[i].name == days[index]) {
             RunLoadAsyncResponse();
             return;
         }
-    Trello.post("/lists?name=" + rdays[index] + "&idBoard=" + schedulerBoardData.id, RunLoadAsyncResponse, LoadFailed);
+    Trello.post("/lists?name=" + days[index] + "&idBoard=" + schedulerBoardData.id, RunLoadAsyncResponse, LoadFailed);
 }
 
 //동기 작업을 시작합니다.
