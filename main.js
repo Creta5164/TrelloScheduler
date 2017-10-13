@@ -388,9 +388,9 @@ function LoadProgramLayout() {
         card = CreateCardLayout();
         card.header.innerHTML = "<a>+ 목표 추가</a>";
         card.header.setAttribute("dateId", days[i]);
-        card.header.setAttribute("onclick", "CreateObjective(\'" + days[i] + "\');");
+        card.header.setAttribute("onclick", "CreateObjective(\'" + rdays[i] + "\');");
         card.footer.innerHTML = kdays[i] + "요일";
-        card.card.id = "cards_" + days[i];
+        card.card.id = "cards_" + rdays[i];
 
         schedulerBoardList[schedulerBoardList.list[i]].layoutData = card;
         _cardContainer.appendChild(card.card);
