@@ -577,10 +577,12 @@ function ViewManageScheduler() {
 
 //새로운 목표를 만듭니다. (폼 생성)
 function CreateObjective(target) {
-    console.log(target);
-    console.log(target.parent);
-    console.log(target.parent.parent);
-    console.log(target.parent.parent.getAttribute("dateId"));
+    var targetDate = target.parentEelement
+                           .parentEelement
+                           .getAttribute("dateId");
+
+
+
 }
 
 //뷰 애니메이션이 종료되었을 때, 애니메이션을 위한 transition을 제거하고, 스왑 버튼을 활성화합니다.
