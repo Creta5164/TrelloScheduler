@@ -386,7 +386,7 @@ function LoadProgramLayout() {
 
     for (var i = 0; i < days.length; i++) {
         card = CreateCardLayout();
-        card.header.innerHTML = "<a onclick=\"CreateObjective\">+ 목표 추가</a>";
+        card.header.innerHTML = "<a href=\"javascript:CreateObjective(" + days[i] + ");\">+ 목표 추가</a>";
         card.header.setAttribute("dateId", days[i]);
         card.header.setAttribute("onclick", "CreateObjective(this);");
         card.footer.innerHTML = kdays[i] + "요일";
