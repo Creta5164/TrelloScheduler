@@ -10,7 +10,7 @@ let isInWebAppChrome;
 const schedulerBoardName = "TrelloScheduler";    //Trello
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const kdays = ["일", "월", "화", "수", "목", "금", "토"];
-const rdays = days.reverse();
+const rdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].reverse();
 let loginState;                                  //로그인 상태 (bool)
 let programLoaded;                               //프로그램이 로드 된 상태 (bool)
 let firstCreated;                                //최초로 보드가 생성된 경우의 상태 (bool)
@@ -391,8 +391,6 @@ function LoadProgramLayout() {
         card.header.setAttribute("onclick", "CreateObjective(this.getAttribute('dateId'));");
         card.footer.innerHTML = kdays[i] + "요일";
         card.card.id = "cards_" + days[i];
-
-        console.log(rdays[i], kdays[i]);
 
         schedulerBoardList[schedulerBoardList.list[i]].layoutData = card;
         _cardContainer.appendChild(card.card);
