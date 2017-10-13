@@ -570,7 +570,7 @@ function ViewManageScheduler() {
     document.getElementById("swapViewButton").style.display = "none";
     document.getElementById("swapViewButton").style.height = "0px";
 
-    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 145px)\";");
+    setTimeout(eval, 375, "cardContainer.style.overflowX = \"scroll\"; cardContainer.style.height = \"calc(100vh - 140px)\";");
     setTimeout(ViewEndAnimation, 750);
 
     document.getElementById("swapViewButton").onclick = ViewToday;
